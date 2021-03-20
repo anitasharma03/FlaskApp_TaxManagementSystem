@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,3 +72,47 @@
 
 </body>
 </html>
+=======
+{% extends "index.html" %} {% block content %}
+<div id="banner" class="desktop">
+  <img class="banner-image" src="images\banner1.png" />
+</div>
+<br /><br />
+<h2 style="text-align: center">Login Form</h2>
+
+<form action="" method="POST">
+  <div class="imgcontainer">
+    <img src="images/avatar2.png" alt="Avatar" class="avatar" />
+  </div>
+
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required />
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required />
+
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember" /> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color: #f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>
+
+<footer class="tm-footer">
+  <b>&copy; COPYRIGHT 2020 TAX NOTES</b>
+  <br />
+  Any Unauthorized reproduction or distribution of the contents of this website
+  is a violation of
+  <br />
+  copyright law and may result in severe civil and criminal penalties. All
+  rights reserved.
+</footer>
+
+{% endblock %}
+>>>>>>> 626b2c50180256645f9845ca86ce7fc56d5f7472
