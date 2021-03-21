@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Tax Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #D3D3D3;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        .container {
+            padding: 16px;
+            background-color: white;
+        }
+        
+        input[type=text],
+        input[type=password],
+        input[type=email],
+        input[type=tel],
+        input[type=file],
+        input[type=number] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+        
+        input[type=text]:focus,
+        input[type=password]:focus,
+        input[type=email]:focus,
+        input[type=tel]:focus,
+        input[type=file]:focus,
+        input[type=number]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+        
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+        
+        .taxSubmitbtn {
+            background-color: #008CBA;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+        
+        .taxSubmitbtn:hover {
+            opacity: 1;
+        }
+        
+        a {
+            color: dodgerblue;
+        }
+        
+        #banner {
+            background-image: url("Images/tax.jpeg");
+            background-size: cover;
+            min-height: 411px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <body>
+        <header class="tm-header">
+            <div class="tm-container">
+                <a href="HOME.html"><img src="Images\logo.jpg" alt="logo" width="250"></a>
+                <nav class="tm-nav">
+                    <ul>
+                        <b>
+                        <li><a href="HOME.html">Home</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="contactus.html">Contact Us</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="term.html">Terms & conditions</a></li>
+                        </b>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div id="banner" class="desktop">
+        </div><br><br>
+        <h1 style="text-align : center;">Tax Form</h2>
+
+            <form action="/action_page.php">
+                <div class="container">
+
+                    <p>Please fill in this details for getting your tax amount which you have to pay.</p>
+                    <hr>
+
+                    <label for="firstname"><b>First Name</b></label><br>
+                    <input type="text" name="firstname" placeholder="Enter First Name" required>
+
+                    <label><b>Last Name</b></label><br>
+                    <input type="text" name="lastname" placeholder="Enter Last Name" required>
+
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" placeholder="Enter Your Email" name="email" id="email" required>
+
+                    <label for="Phone"><b>Phone Number</b></label>
+                    <input type="tel" placeholder="Enter valid mobile number" name="Phone" id="Phone" required>
+
+                    <label for="address"><b>Primary Address</b></label>
+                    <input type="text" placeholder="Enter Your address" name="address" id="address" required>
+
+                    <label for="address2"><b>Secondary Address</b></label>
+                    <input type="text" placeholder="Enter secondary address if any" name="address2" id="address2">
+
+                    <label><b>Gender</b></label>
+                    <input type="radio" name="sex" value="female" checked="checked">Female
+                    <input type="radio" name="sex" value="male">Male<br><br>
+
+                    <label for="image"><b>Upload Your Image</b></label>
+                    <input type="file" accept="image/*" id="image">
+
+                    <label for="sin"><b>Social Insurance Number</b></label>
+                    <input type="number" name="sin" id="sin" required>
+
+                    <label for="NetIncome"><b>Yearly Income</b></label>
+                    <input type="number" name="NetIncome" id="NetIncome" required>
+
+                    <label for="ExtraIncome"><b>Additional Income From Other Sources</b></label>
+                    <input type="number" name="ExtraIncome" id="ExtraIncome">
+
+                    <label for="expenses"><b>Expenses During The Year</b></label>
+                    <input type="number" name="expenses" id="expenses">
+
+                    <label for="losses"><b>Losses During The Year</b></label>
+                    <input type="number" name="losses" id="losses">
+
+                    <label for="rrsp"><b>RRSP (Retirement Savings Plan) Contribution</b></label>
+                    <input type="number" name="rrsp" id="rrsp" required>
+
+                    <hr>
+
+                    <button type="submit" class="taxSubmitbtn">Submit Details</button>
+                </div>
+
+            </form>
+
+            <footer class="tm-footer">
+                <b>&copy; COPYRIGHT 2020 TAX NOTES</b>
+                <br> Any Unauthorized reproduction or distribution of the contents of this website is a violation of
+                <br> copyright law and may result in severe civil and criminal penalties. All rights reserved.
+            </footer>
+
+    </body>
+
+</html>
