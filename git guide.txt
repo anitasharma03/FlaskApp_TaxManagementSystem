@@ -1,4 +1,7 @@
 always do "git pull" first
+git pull
+git status
+
 after making changes
 git add .
 git commit -m "any message here about changes"
