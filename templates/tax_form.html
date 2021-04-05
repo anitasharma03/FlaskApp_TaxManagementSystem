@@ -5,22 +5,11 @@
     <title>Tax Form</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link href="/FlaskApp/static/main.css" rel="stylesheet" type="text/css">
 
     <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #D3D3D3;
-        }
-        
         * {
             box-sizing: border-box;
-        }
-        
-        .container {
-            padding: 16px;
-            background-color: white;
-			width:70%;
         }
         
         input[type=text],
@@ -74,14 +63,15 @@
 
 </head>
 
-<body>
-    <body>
-        <header class="tm-header">
-            <div class="tm-container">
-                <a href="HOME.html"><img src="../Images\logo.jpg" alt="logo" width="250"></a>
-                <nav class="tm-nav">
-                    <ul>
-                        <b>
+<body style="font-family: Arial, Helvetica, sans-serif; background-color: #D3D3D3;">
+
+
+    <header class="tm-header">
+        <div class="tm-container">
+            <a href="HOME.html"><img src="../Images\logo.jpg" alt="logo" width="250"></a>
+            <nav class="tm-nav">
+                <ul>
+                    <b>
                         <li><a href="HOME.html">Home</a></li>
                         <li><a href="login.html">Login</a></li>
                         <li><a href="register.html">Register</a></li>
@@ -90,77 +80,79 @@
                         <li><a href="team.html">Team</a></li>
                         <li><a href="term.html">Terms & conditions</a></li>
                         </b>
-                    </ul>
-                </nav>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div id="banner" class="desktop">
+        <img class="banner-image" src="{{ url_for('static',filename='Images/banner1.png') }}" alt="Main banner">
+    </div><br><br>
+    <h1 style="text-align : center;">Tax Form</h2>
+
+        <form action="/action_page.php">
+            <div class="container" style="padding: 16px;
+            background-color: white;
+            width: 70%; margin-left:220px;">
+
+                <p>Please fill in this details for getting your tax amount which you have to pay.</p>
+                <hr>
+
+                <label for="firstname"><b>First Name</b></label><br>
+                <input type="text" name="firstname" placeholder="Enter First Name" required>
+
+                <label><b>Last Name</b></label><br>
+                <input type="text" name="lastname" placeholder="Enter Last Name" required>
+
+                <label for="email"><b>Email</b></label>
+                <input type="email" placeholder="Enter Your Email" name="email" id="email" required>
+
+                <label for="Phone"><b>Phone Number</b></label>
+                <input type="tel" placeholder="Enter valid mobile number" name="Phone" id="Phone" required>
+
+                <label for="address"><b>Primary Address</b></label>
+                <input type="text" placeholder="Enter Your address" name="address" id="address" required>
+
+                <label for="address2"><b>Secondary Address</b></label>
+                <input type="text" placeholder="Enter secondary address if any" name="address2" id="address2">
+
+                <label><b>Gender</b></label>
+                <input type="radio" name="sex" value="female" checked="checked">Female
+                <input type="radio" name="sex" value="male">Male<br><br>
+
+                <label for="image"><b>Upload Your Image</b></label>
+                <input type="file" accept="image/*" id="image">
+
+                <label for="sin"><b>Social Insurance Number</b></label>
+                <input type="number" name="sin" id="sin" required>
+
+                <label for="NetIncome"><b>Yearly Income</b></label>
+                <input type="number" name="NetIncome" id="NetIncome" required>
+
+                <label for="ExtraIncome"><b>Additional Income From Other Sources</b></label>
+                <input type="number" name="ExtraIncome" id="ExtraIncome">
+
+                <label for="expenses"><b>Expenses During The Year</b></label>
+                <input type="number" name="expenses" id="expenses">
+
+                <label for="losses"><b>Losses During The Year</b></label>
+                <input type="number" name="losses" id="losses">
+
+                <label for="rrsp"><b>RRSP(Retirement Savings Plan) Contribution</b></label>
+                <input type="number" name="rrsp" id="rrsp" required>
+
+                <hr>
+
+                <button type="submit" class="taxSubmitbtn">Submit Details</button>
             </div>
-        </header>
-        <div id="banner" class="desktop">
-            <img class="banner-image" src="{{ url_for('static',filename='Images/banner1.png') }}">
-        </div><br><br>
-        <h1 style="text-align : center;">Tax Form</h2>
 
-            <form action="/action_page.php" style = "">
-                <div class="container" style = "margin-left:220px;;">
+        </form>
 
-                    <p>Please fill in this details for getting your tax amount which you have to pay.</p>
-                    <hr>
+        <footer class="tm-footer">
+            <b>&copy; COPYRIGHT 2020 TAX NOTES</b>
+            <br> Any Unauthorized reproduction or distribution of the contents of this website is a violation of
+            <br> copyright law and may result in severe civil and criminal penalties. All rights reserved.
+        </footer>
 
-                    <label for="firstname"><b>First Name</b></label><br>
-                    <input type="text" name="firstname" placeholder="Enter First Name" required>
-
-                    <label><b>Last Name</b></label><br>
-                    <input type="text" name="lastname" placeholder="Enter Last Name" required>
-
-                    <label for="email"><b>Email</b></label>
-                    <input type="email" placeholder="Enter Your Email" name="email" id="email" required>
-
-                    <label for="Phone"><b>Phone Number</b></label>
-                    <input type="tel" placeholder="Enter valid mobile number" name="Phone" id="Phone" required>
-
-                    <label for="address"><b>Primary Address</b></label>
-                    <input type="text" placeholder="Enter Your address" name="address" id="address" required>
-
-                    <label for="address2"><b>Secondary Address</b></label>
-                    <input type="text" placeholder="Enter secondary address if any" name="address2" id="address2">
-
-                    <label><b>Gender</b></label>
-                    <input type="radio" name="sex" value="female" checked="checked">Female
-                    <input type="radio" name="sex" value="male">Male<br><br>
-
-                    <label for="image"><b>Upload Your Image</b></label>
-                    <input type="file" accept="image/*" id="image">
-
-                    <label for="sin"><b>Social Insurance Number</b></label>
-                    <input type="number" name="sin" id="sin" required>
-
-                    <label for="NetIncome"><b>Yearly Income</b></label>
-                    <input type="number" name="NetIncome" id="NetIncome" required>
-
-                    <label for="ExtraIncome"><b>Additional Income From Other Sources</b></label>
-                    <input type="number" name="ExtraIncome" id="ExtraIncome">
-
-                    <label for="expenses"><b>Expenses During The Year</b></label>
-                    <input type="number" name="expenses" id="expenses">
-
-                    <label for="losses"><b>Losses During The Year</b></label>
-                    <input type="number" name="losses" id="losses">
-
-                    <label for="rrsp"><b>RRSP Contribution</b></label>
-                    <input type="number" name="rrsp" id="rrsp" required>
-
-                    <hr>
-
-                    <button type="submit" class="taxSubmitbtn">Submit Details</button>
-                </div>
-
-            </form>
-
-            <footer class="tm-footer">
-                <b>&copy; COPYRIGHT 2020 TAX NOTES</b>
-                <br> Any Unauthorized reproduction or distribution of the contents of this website is a violation of
-                <br> copyright law and may result in severe civil and criminal penalties. All rights reserved.
-            </footer>
-
-    </body>
+</body>
 
 </html>
