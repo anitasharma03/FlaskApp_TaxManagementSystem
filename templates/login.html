@@ -1,88 +1,24 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>
-		LOGIN FORM
-    </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="main.css">
-	<link rel="stylesheet" type="text/css" href="login_style.css">
-	
-	
-</head>
-<body>
-    <header class="tm-header">
-		<div class="tm-container">
-			<a href="HOME.html"><img src="Images\logo.jpg" alt="logo" width="250"></a>
-			<nav class="tm-nav">
-				<ul>
-					<b>
-					<li><a href="HOME.html">Home</a></li>
-					<li><a href="login.html">Login</a></li>
-					<li><a href="register.html">Register</a></li>
-					<li><a href="aboutus.html">About Us</a></li>
-					<li><a href="contactus">Contact Us</a></li>
-					<li><a href="team.html">Team</a></li>
-					<li><a href="term.html">Terms & Conditions</a></li>
-					</b>
-				</ul>
-			</nav>
-		</div>
-    </header>
-	<div id="banner" class="desktop">
-			<img class="banner-image" src="images\banner1.png">
-		</div>
-		<br><br>
-	<h2 style = "text-align : center;">Login Form</h2>
-
-<form action="/action_page.php" method="post">
-  <div class="imgcontainer">
-    <img src="images/avatar2.png" alt="Avatar" class="avatar">
-  </div>
-
-  <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-        
-    <button type="submit" style = "margin-left : 200px;">Login</button><br>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div>
-
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a style= "color:blue;" href="#">password?</a></span>
-  </div>
-</form>
-
-
-    
-    <footer class="tm-footer">
-			<b>&copy; COPYRIGHT 2020 TAX NOTES</b>
-			<br>
-			Any Unauthorized reproduction or distribution of the contents of this website is a violation of  
-			<br>
-			copyright law and may result in severe civil and criminal penalties. All rights reserved.	
-    </footer>
-
-</body>
-</html>
-=======
 {% extends "index.html" %} {% block content %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static',filename='login_style.css') }}"
+/>
 <div id="banner" class="desktop">
-  <img class="banner-image" src="images\banner1.png" />
+  <img
+    class="banner-image"
+    src="{{ url_for('static',filename='Images\banner1.png') }}"
+  />
 </div>
 <br /><br />
 <h2 style="text-align: center">Login Form</h2>
 
-<form action="" method="POST">
+<form action="/check_login" method="POST">
   <div class="imgcontainer">
-    <img src="images/avatar2.png" alt="Avatar" class="avatar" />
+    <img
+      src="{{ url_for('static',filename='Images/avatar2.png') }}"
+      alt="Avatar"
+      class="avatar"
+    />
   </div>
 
   <div class="container">
@@ -115,4 +51,3 @@
 </footer>
 
 {% endblock %}
->>>>>>> 626b2c50180256645f9845ca86ce7fc56d5f7472
