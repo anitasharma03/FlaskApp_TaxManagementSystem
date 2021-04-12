@@ -1,15 +1,18 @@
 {% extends "index.html" %}{% block content %}
 <main>
-  <div id="banner" class="desktop">
-    <img
-      class="banner-image"
-      src="{{ url_for('static',filename='Images/banner1.PNG') }}"
-    />
-  </div>
-  <hr />
-  <br />
-  <section>
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-  </section>
+    <div id="banner" class="desktop">
+        <img class="banner-image" src="{{ url_for('static',filename='Images/banner1.PNG') }}" />
+    </div>
+    <hr />
+    <br />
+    <section>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    </section>
+    <footer class="tm-footer">
+        <b>&copy; COPYRIGHT 2020 TAX NOTES</b>
+        <br /> Any Unauthorized reproduction or distribution of the contents of this website is a violation of
+        <br /> copyright law and may result in severe civil and criminal penalties. All rights reserved.
+    </footer>
+
 </main>
 {% endblock %}
