@@ -1,43 +1,180 @@
 {% extends "index.html" %} {% block content %}
 
-<div class="page-heading about-heading header-text" style="background-image: url(Images/banner1.png);">
-    <div class="container">
+<div id="banner" class="desktop">
+    <img class="banner-image" src="{{ url_for('static',filename='Images/about.jpeg') }}" />
+    <br><br>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div>
+            <h2 style="text-align: center" class="text-uppercase"><strong>OUR COMPANY TAX BLOGS</strong></h2>
+        </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="text-content">
-                <h2><b>ABOUT OUR COMPANY</b></h2>
+</div>
+</div>
+
+<div class="best-features about-features">
+
+    <img src="Images/building.jpg" alt="" style="margin-left:15px;">
+
+    <div class="card border-secondary">
+        <div class="card-header text-white bg-secondary text-center">
+            CULTURE AND HARDWORK ARE THE BUILDING BLOCKS OF A SUCCESSFUL COMPANY !
+        </div>
+        <div class="card-body text-justify">
+            <div class="card-text">
+                <b>
+                    Tax Notes is the first source of essential daily news, analysis, and commentary for tax
+                    professionals whose success depends on being trusted for their expertise.
+
+                    Tax Notes is a portfolio of publications offered by Tax Analysts, a nonprofit tax publisher. It
+                    provides comprehensive and impartial coverage of tax news, while its commentary contributes
+                    important voices to the discussion and understanding of tax policy.
+
+                    Founded in 1970, Tax Analysts was created to foster free, open, and informed discussion about
+                    taxation. In 1972 Tax Analysts published Tax Notes Federal, its first weekly journal, featuring
+                    news, commentary, and analysis on federal taxation. In 1989 Tax Analysts added Tax Notes
+                    International, a weekly magazine focused on international taxation. Tax Notes State rounded out the
+                    weekly portfolio in 1991. Each magazine offers best-in-class tax commentary and analysis on the
+                    latest changes in tax law and policy, as well as on court opinions, legislative action, and revenue
+                    rulings.
+
+                    Tax Notes has continued to innovate through the years, adding the online daily news services Tax
+                    Notes Today Federal, Tax Notes Today International, and Tax Notes Today State between 1987 and 1991.
+                    Tax Notes also provides several research and reference tools, as well as specialized services
+                    focusing on exempt organizations, state tax audit guidance, and international tax treaties..
+                </b>
+
+
+                <div class="card-footer text-right text-danger">
+                    Anita Sharma
+                    <p class="font-italic d-inline text-muted ">Tax Specialist</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-
-<div class="best-features about-features">
-    <div class="container">
-        <div class="section-heading">
-            <h2 style="margin-left:15px; margin-top: 6px;">About Tax Notes</h2>
+    <div class="card border-info">
+        <div class="card-header text-white bg-info text-center">
+            Long wait times, incorrect answers hand CRA call centres a D grade: Karan Gaba
         </div>
-        <img src="Images/building.jpg" alt="image of the building" style="margin-left:15px;">
-        <h4 style="margin-left:20px;"> CULTURE AND HARDWORK IS THE BUILDING BLOCKS OF WHEALZ DEALZ !
-            <h4>
-                <p style="text-align:justify ; color:black ;font-size: 17px; margin-left:15px;">
+        <div class="card-body text-justify">
+            <div class="card-text">
+                <b>
+                    It found 49 per cent of the 200 test calls made by CFIB employees in June 2019 couldn’t be
+                    completed due to excessive wait times, blocked calls or disconnects.
+
+                    That’s up from 30 per cent of calls that couldn’t be completed in a 2016 test and only 20 per
+                    cent that couldn’t be completed in 2012.
+
+                    The CFIB also says CRA agents provided incomplete or incorrect information in 41 per cent of the
+                    cases where its callers received an answer, compared with 31 per cent in the 2016 report card
+                    and 24 per cent in 2012
+
+                    Canada Revenue Agency says it’s already working on improvements, such as providing an estimated
+                    wait time to speak with a senior agent and a feature that allows callers to keep their priority
+                    without staying on hold.
+
+                    “We are also making continuous improvements to our web content, and will soon introduce a
+                    chatbot to help make it easier for Canadians to find information online,” CRA spokesman Etienne
+                    Biram said in an emailed statement.
+                </b>
 
 
-                    <b>
-Tax Notes is the first source of essential daily news, analysis, and commentary for tax professionals whose success depends on being trusted for their expertise.
+                <div class="card-footer text-right text-danger">
+                    Karan Gaba
+                    <p class="font-italic d-inline text-muted ">CRA Activist</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-Tax Notes is a portfolio of publications offered by Tax Analysts, a nonprofit tax publisher. It provides comprehensive and impartial coverage of tax news, while its commentary contributes important voices to the discussion and understanding of tax policy.
+    <div class="card border-dark">
+        <div class="card-header text-white bg-dark text-center">
+            New federal study shows workers hit hardest by extra earnings tax, benefit system
+        </div>
+        <div class="card-body text-justify">
+            <div class="card-text">
+                <b>
+                    Paying more in taxes was the culprit for those making the most, while those near the bottom faced a
+                    double-whammy of taxes and drops in income-tested benefits, such as the Canada Child Benefit.
 
-Founded in 1970, Tax Analysts was created to foster free, open, and informed discussion about taxation. In 1972 Tax Analysts published Tax Notes Federal, its first weekly journal, featuring news, commentary, and analysis on federal taxation. In 1989 Tax Analysts added Tax Notes International, a weekly magazine focused on international taxation. Tax Notes State rounded out the weekly portfolio in 1991. Each magazine offers best-in-class tax commentary and analysis on the latest changes in tax law and policy, as well as on court opinions, legislative action, and revenue rulings.
+                    Overall, the country’s 19 million workers would have lost, on average, $341 for each $1,000 boost in
+                    their earnings based on the 2017 data the paper relied on, but the burden was heavier for workers
+                    with children.
 
-Tax Notes has continued to innovate through the years, adding the online daily news services Tax Notes Today Federal, Tax Notes Today International, and Tax Notes Today State between 1987 and 1991. Tax Notes also provides several research and reference tools, as well as specialized services focusing on exempt organizations, state tax audit guidance, and international tax treaties..</b></p>
+                    Officials noted that being not much better off, or faring even worse, after a boost in earnings
+                    could be a disincentive for taking extra work for those employed, and could keep others out of the
+                    job market.
+
+                    The latter situation was one the documents describe as particularly pronounced for “secondary
+                    earners.” Those are people who make less money than their partners — usually women.
+                </b>
+
+
+                <div class="card-footer text-right text-danger">
+                    Manpreet Suman Kaur
+                    <p class="font-italic d-inline text-muted ">Taxation Analyst</p>
+                </div>
+            </div>
+        </div>
 
 
     </div>
 </div>
+
+<div class="text-center py-5 text-uppercase">
+    <h2><strong>MEET OUR TEAM</strong> </h2>
 </div>
 
+<div class="d-flex justify-content-around">
+    <div class="card team-member-card">
+        <img class="card-img-top" src="{{ url_for('static',filename='Images/team_02.jpg') }}" alt="">
+        <div class="card-body">
+            <h5 class="card-title">WEB DESIGNER</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Manpreet Suman</h6>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Contact No:</strong> +1(647)345-8126</li>
+                <li class="list-group-item"><strong>Email:</strong> tax_manpreet0@gmail.com</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card team-member-card">
+        <img class="card-img-top" src="{{ url_for('static',filename='Images/team_04.jpg') }}" alt="">
+        <div class="card-body">
+            <h5 class="card-title">FRONT-END DEVELOPER</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Anita Sharma</h6>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Contact No:</strong> +1(647)-123-123</li>
+                <li class="list-group-item"><strong>Email:</strong> taxanusharma@gmail.com</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card team-member-card">
+        <img class="card-img-top" src="{{ url_for('static',filename='Images/team_01.jpg') }}" alt="">
+        <div class="card-body">
+            <h5 class="card-title">BACK-END DEVELOPER</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Karan Gaba</h6>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Contact No:</strong> +1(647)512-3681</li>
+                <li class="list-group-item"><strong>Email:</strong> tax_karangaba@gmail.com</li>
+            </ul>
+        </div>
+    </div>
+    <div class="card team-member-card">
+        <img class="card-img-top" src="{{ url_for('static',filename='Images/team_03.jpg') }}" alt="">
+        <div class="card-body">
+            <h5 class="card-title">CONTENT CO-ORDINATOR</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Jaspreet Kaur</h6>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Contact No:</strong> +1(437)233-3456</li>
+                <li class="list-group-item"><strong>Email:</strong> tax_jaspreet1@gmail.com</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <footer class="tm-footer">
     <b>&copy; COPYRIGHT 2020 TAX NOTES</b>

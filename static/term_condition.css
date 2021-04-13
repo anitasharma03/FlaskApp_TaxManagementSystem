@@ -1,0 +1,14 @@
+p.a {
+    text-align: justify;
+    margin-left: 550px;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+p.b {
+    text-align: justify;
+    margin-left: 350px;
+    margin-right: 10px;
+    width: 50%;
+    font-size: 15px;
+}

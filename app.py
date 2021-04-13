@@ -8,12 +8,11 @@ accounts = db.accounts
 
 app = Flask(__name__)
 
-
 @app.route('/')
 @app.route('/home')
 def home():
     return render_template('home.html')
-
+    
 
 @app.route('/login')
 def login():
@@ -30,7 +29,6 @@ def check_login():
         else:
             continue
     return redirect("/login")
-
 
 
 @app.route('/register')
@@ -68,3 +66,4 @@ def contactus():
 def test():
     accounts.insert_one({"name": "John"})
     return "Connected to the data base!"
+
