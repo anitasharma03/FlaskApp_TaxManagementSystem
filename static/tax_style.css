@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+.form-container {
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 30%);
+    background-color: #f7f7f7;
+    padding: 30px;
+    width: 50%;
+    margin: auto;
+}
+
+.taxSubmitbtn {
+    background-color: #008CBA;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.taxSubmitbtn:hover {
+    opacity: 1;
+}
+
+a {
+    color: dodgerblue;
+}
+
+.container {
+    padding: 16px;
+    background-color: white;
+    width: 70%;
+    margin-left: 220px;
+}

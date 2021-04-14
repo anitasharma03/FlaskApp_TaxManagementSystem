@@ -111,7 +111,26 @@ ul#menu li {
   background-color: #4CAF50;
   color: white;
 }
-
+.bodybg1
+{
+     /*background: url("/static/Images/taxbg1.jpg") no-repeat 0px 0px;*/
+	 background-image: url('{{ url_for('static', filename='Images/taxbg1.jpg' ) }}');
+     background-repeat: no-repeat;
+     background-attachment: fixed;  
+     background-size: cover;
+    }
+	
+.button1 {     
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+	color : black;
+	font-size: 20px;
+    overflow: hidden; 
+	border: 3px solid #000000;
+	
+}
 /* ____________ */
 
 

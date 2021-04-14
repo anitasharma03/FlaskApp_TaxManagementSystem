@@ -1,53 +1,50 @@
 {% extends "index.html" %} {% block content %}
-<link
-  rel="stylesheet"
-  href="{{ url_for('static',filename='login_style.css') }}"
-/>
+<script>
+    function alertUser() {
+        alert("Please give us a call at +1 800-5552-356 to reset the password.")
+    }
+
+    function proceed(e) {
+        // TODO: add logic to proceed if right username and password.
+        window.location.href = '/tax_form';
+    }
+</script>
+<link rel="stylesheet" href="{{ url_for('static',filename='login_style.css') }}" />
 <div id="banner" class="desktop">
-  <img
-    class="banner-image"
-    src="{{ url_for('static',filename='Images\banner1.png') }}"
-  />
+    <img class="banner-image" src="{{ url_for('static',filename='Images/banner3.jpg') }}" />
 </div>
 <br /><br />
-<h2 style="text-align: center">Login Form</h2>
+<h2 style="text-align: center" class="text-uppercase"><strong>Login Form</strong></h2>
 
 <form action="/check_login" method="POST">
-  <div class="imgcontainer">
-    <img
-      src="{{ url_for('static',filename='Images/avatar2.png') }}"
-      alt="Avatar"
-      class="avatar"
-    />
-  </div>
+    <div class="form-container">
+        <div class="imgcontainer">
+            <img src="{{ url_for('static',filename='Images/avatar2.png') }}" alt="Avatar" class="avatar fadeIn first" />
+        </div>
 
-  <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required />
+        <div class="form-group">
+            <label for="uname"><b>Username</b></label>
+            <input class="form-control" type="text" placeholder="Enter Username" name="uname" required />
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required />
+            <label for="psw"><b>Password</b></label>
+            <input class="form-control" type="password" placeholder="Enter Password" name="psw" required />
+            <input type="checkbox" checked="checked" name="remember" /> Remember me
+        </div>
 
-    <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember" /> Remember me
-    </label>
-  </div>
-
-  <div class="container" style="background-color: #f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
+        <div class="d-flex">
+            <button onclick="proceed(event)" class="submit-button" type="submit" >Login</button>
+            <button type="button" class="cancel-button">Cancel</button>
+        </div>
+        <div class="d-flex justify-content-center my-3">
+            <a onclick="alertUser()" class="text-primary">Forgot password?</a>
+        </div>
+    </div>
 </form>
 
 <footer class="tm-footer">
-  <b>&copy; COPYRIGHT 2020 TAX NOTES</b>
-  <br />
-  Any Unauthorized reproduction or distribution of the contents of this website
-  is a violation of
-  <br />
-  copyright law and may result in severe civil and criminal penalties. All
-  rights reserved.
+    <b>&copy; COPYRIGHT 2020 TAX NOTES</b>
+    <br /> Any Unauthorized reproduction or distribution of the contents of this website is a violation of
+    <br /> copyright law and may result in severe civil and criminal penalties. All rights reserved.
 </footer>
 
 {% endblock %}

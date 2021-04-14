@@ -4,27 +4,24 @@
     <title>INDEX</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="{{ url_for('static',filename='main.css') }}" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
   </head>
   <body>
     <header class="tm-header">
-      <div class="tm-container">
-        <a href="/home"
-          ><img src="{{ url_for('static',filename='Images\logo.jpg') }}" alt="logo" width="250"
-        /></a>
-        <nav class="tm-nav">
-          <ul>
-            <b>
-              <li><a href="/home">Home</a></li>
-              <li><a href="/login">Login</a></li>
-              <li><a href="/register">Register</a></li>
-              <li><a href="/aboutus">About Us</a></li>
-              <li><a href="/contactus">Contact Us</a></li>
-              <li><a href="/team">Team</a></li>
-              <li><a href="/term">Terms & conditions</a></li>
-            </b>
-          </ul>
-        </nav>
-      </div>
+        <div class="tm-container">
+            <a class="navbar-brand" href="/home"><img src="{{ url_for('static',filename='Images/logo.jpg') }}" alt="logo" width="250" /></a>
+            <nav class="tm-nav">
+                <ul style="margin-top: 24px;">
+                    <li><a class="h6 text-uppercase" href="/home"><strong>Home</strong></a></li>
+                    <li><a class="h6 text-uppercase" href="/login"><strong>Login</strong></a></li>
+                    <li><a class="h6 text-uppercase" href="/register"><strong>Register</strong></a></li>
+                    <li><a class="h6 text-uppercase" href="/aboutus"><strong>About Us</strong></a></li>
+                    <li><a class="h6 text-uppercase" href="/contactus"><strong>Contact Us</strong></a></li>
+                    <li><a class="h6 text-uppercase" href="/term"><strong>Terms & conditions</strong></a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     {% block content %}{% endblock %}
   </body>
