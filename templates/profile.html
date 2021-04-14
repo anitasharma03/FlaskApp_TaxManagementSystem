@@ -1,0 +1,29 @@
+{% extends 'index.html' %}{% block content %}
+<form>
+  <div class="form-group">
+    <label for="savedEmail">Email address</label>
+    <input type="email" class="form-control" id="savedEmail" />
+    <small id="emailHelp" class="form-text text-muted"
+      >We'll never share your email with anyone else.</small
+    >
+  </div>
+  <div class="form-group">
+    <label for="savedFname">First name</label>
+    <input type="text" class="form-control" id="savedFname" />
+  </div>
+  <div class="form-group">
+    <label for="savedLname">Last name</label>
+    <input type="text" class="form-control" id="savedLname" />
+  </div>
+  <div class="form-group">
+    <label for="savedddress">Address</label>
+    <input type="text" class="form-control" id="savedAddress" />
+  </div>
+  <div class="form-group">
+    <label for="savedNumber">Phone Number</label>
+    <input type="text" class="form-control" id="savedNumber" />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
