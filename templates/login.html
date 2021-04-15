@@ -1,13 +1,12 @@
 {% extends "index.html" %} {% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script>
     function alertUser() {
-        alert("Please give us a call at +1 800-5552-356 to reset the password.")
+        alert("Please give us a call at +1 800-5552-356 to reset your password.")
     }
 
-    function proceed(e) {
-        // TODO: add logic to proceed if right username and password.
-        window.location.href = '/tax_form';
-    }
+    function proceed(e) {}
 </script>
 <link rel="stylesheet" href="{{ url_for('static',filename='login_style.css') }}" />
 <div id="banner" class="desktop">
@@ -16,15 +15,15 @@
 <br /><br />
 <h2 style="text-align: center" class="text-uppercase"><strong>Login Form</strong></h2>
 
-<form action="" method="POST">
+<form action="/check_login" method="POST">
     <div class="form-container">
         <div class="imgcontainer">
             <img src="{{ url_for('static',filename='Images/avatar2.png') }}" alt="Avatar" class="avatar fadeIn first" />
         </div>
 
         <div class="form-group">
-            <label for="uname"><b>Username</b></label>
-            <input class="form-control" type="text" placeholder="Enter Username" name="uname" required />
+            <label for="email"><b>Email Address</b></label>
+            <input class="form-control" type="email" placeholder="Enter Your Email ID" name="email" required />
 
             <label for="psw"><b>Password</b></label>
             <input class="form-control" type="password" placeholder="Enter Password" name="psw" required />
@@ -37,6 +36,9 @@
         </div>
         <div class="d-flex justify-content-center my-3">
             <a onclick="alertUser()" class="text-primary">Forgot password?</a>
+        </div>
+        <div>
+            <p class="py-2 text-center"> Don't have an account? <a href="register">Register Here</a>.</p>
         </div>
     </div>
 </form>
