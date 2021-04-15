@@ -1,9 +1,18 @@
 <script>
     function sendMessage() {
-        alert("An email has been sent to the account.")
+        const myForm = document.getElementById('contact-us-form');
+        const required = Array.prototype.slice.call(myForm.querySelectorAll("[required]"))
+        const isFormValid = required.every((input) => input.value !== '');
+        if (isFormValid) {
+            alert("An email has been sent to the account.")
+        } else {
+            alert("Please correct the errors in the form.")
+        }
     }
 </script>
+
 {% extends "index.html" %} {% block content %}
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <main>
     <section class="contact">
@@ -58,7 +67,7 @@
                 </div>
             </div>
             <div class="contactForm contact-form-box">
-                <form>
+                <form id="contact-us-form">
                     <h2><strong>Send Message</strong></h2>
                     <div class="inputBox">
                         <input type="text" name="" required="required">
@@ -69,8 +78,7 @@
                         <span>Last Name</span>
                     </div>
                     <div class="inputBox">
-                        <input type="text" name="" required="required">
-                        <span>Email</span>
+                        <input type="email" value="taxnotes@yahoo.com" disabled name="" required>
                     </div>
                     <div class="inputBox">
                         <textarea required="required"></textarea>
@@ -83,10 +91,13 @@
             </div>
         </div>
     </section>
+
 </main>
+
 <footer class="tm-footer">
     <b>&copy; COPYRIGHT 2020 TAX NOTES</b>
     <br> Any Unauthorized reproduction or distribution of the contents of this website is a violation of
     <br> copyright law and may result in severe civil and criminal penalties. All rights reserved.
 </footer>
+
 {% endblock %}

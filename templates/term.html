@@ -1,114 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>TERM</title>
-    <meta charset="UTF-8" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('static',filename='main.css') }}"
-    />
-    <style>
-      p.a {
-        text-align: justify;
-        margin-left: 550px;
-        margin-right: 10px;
-        font-size: 20px;
-      }
+{% extends "index.html" %} {% block content %}
 
-      p.b {
-        text-align: justify;
-        margin-left: 350px;
-        margin-right: 10px;
-        width: 50%;
-        font-size: 15px;
-      }
-    </style>
-  </head>
+<link rel="stylesheet" href="{{ url_for('static',filename='term_condition.css') }}" />
+<div id="banner" class="desktop">
+    <img class="banner-image" src="{{ url_for('static',filename='Images/terms_banner.png') }}" />
+</div>
 
-  <body>
-    <header class="tm-header">
-      <div class="tm-container">
-        <a href="home.html"
-          ><img src="Images/logo.jpg" alt="logo" width="250"
-        /></a>
-        <nav class="tm-nav">
-          <ul>
-            <b>
-              <li><a href="home.html">Home</a></li>
-              <li><a href="login.html">Login</a></li>
-              <li><a href="register.html">Register</a></li>
-              <li><a href="aboutus.html">About Us</a></li>
-              <li><a href="contactus.html">Contact Us</a></li>
-              <li><a href="team.html">Team</a></li>
-              <li><a href="term.html">Terms & conditions</a></li>
-            </b>
-          </ul>
-        </nav>
-      </div>
-    </header>
+<div class="jumbotron mx-4 my-4" style="background-color: transparent !important;">
+    <h1 class="display-4">Tax Rental Agreement</h1>
+    <p class="lead">Terms of service are the legal agreements between a service provider and a person who wants to use that service. </p>
+    <hr class="my-4">
+    <h6 class="card-subtitle mb-2 text-muted">BBC News</h6>
+    <p class="card-text text-justify">Due to COVID-19, Tax Analysts will host our 50th Anniversary celebration in early 2021. During this virtual event, we will commemorate the history, growth, and achievements of Tax Analysts, and we will look towards our next 50 years. We also will
+        honor Larry Gibbs – a former IRS commissioner and Tax Analysts board member, now a senior counsel at Miller & Chevalier, and a longstanding pillar of the tax community. As part of our 50th Anniversary, Tax Analysts launched Taxing Issues, a webinar
+        series though which we have brought the tax community together with key policymakers to discuss leading issues of tax policy and administration. It has been incredibly well-received and will continue next year. Below are sponsorship opportunities
+        for our partners to support this work and to provide a forum for the debate on tax policy.</p>
+</div>
 
-    <div
-      class="page-heading about-heading header-text"
-      style="background-image: url(images/pic22.jpg)"
-    >
-      <div class="text-content">
-        <h2>Terms And Conditions</h2>
-      </div>
+<div class="term-container">
+
+    <div class="card bg-light ml-2 my-3" style="width: 25%">
+        <div class="card-header font-weight-bold">Refund Policy</div>
+        <div class="card-body">
+            <p class="card-text text-justify">We will organise the refund of the maximum amount possible based on the information and documentation provided by its customers and in line with the legal entitlements and obligations of the customer within the tax law of the country from
+                which the tax refund is being reclaimed.The tax authority information leads to a decision that the customer is not due a refund.The tax authority has different information on its system than that provided by the customer.</p>
+        </div>
+    </div>
+    <div class="card bg-light my-3" style="width: 25%">
+        <div class="card-header font-weight-bold">Tax Enforcement Law</div>
+        <div class="card-body">
+            <p class="card-text text-justify">Where there is a change in the applicable tax law in the country from which the tax refund is being reclaimed, or in the interpretation or implementation of the rules and laws by the tax authorities of that country, taxnotes will meet its
+                commitment to organise the refund to the degree allowed by the law, interpretation and implementation by the tax authority in that country.The decision of the exact value of any refund due or amount owed is the decision of the relevant
+                Tax Authority.</p>
+        </div>
+    </div>
+    <div class="card bg-light my-3" style="width: 25%">
+        <div class="card-header font-weight-bold">Reimbursement Policy</div>
+        <div class="card-body">
+            <p class="card-text text-justify">We will provide the refund as expediently as possible, subject to the provision of the necessary documents by the customers and the efficient processing of the refund application by the relevant tax office.When the customer signs a Power of
+                Attorney permitting taxback.com to organise his/her refunds, he/she is agreeing to pay the fee to taxback.com for the organisation of the refund.</p>
+        </div>
     </div>
 
-    <div class="team-members">
-      <div class="container">
-        <div class="section-heading"></div>
-        <h2 style="margin-left: 10px; margin-right: 10px; color: red">
-          Rental Terms and Conditions
-        </h2>
-        <p
-          style="
-            text-align: justify;
-            margin-left: 20px;
-            margin-right: 20px;
-            font-size: 15px;
-          "
-        >
-          <b
-            >THESE TERMS AND CONDITIONS CONTAIN A BINDING ARBITRATION CLAUSE AND
-            CLASS ACTION WAIVER THAT IMPACT YOUR RIGHTS ABOUT HOW TO RESOLVE
-            DISPUTES. PLEASE READ THIS PROVISION CAREFULLY.</b
-          >
-        </p>
-        <br />
-        <hr />
-        <p class="a"><b> Tax Rental Agreement</b></p>
-
-        <p class="b">
-          Due to COVID-19, Tax Analysts will host our 50th Anniversary
-          celebration in early 2021. During this virtual event, we will
-          commemorate the history, growth, and achievements of Tax Analysts, and
-          we will look towards our next 50 years. We also will honor Larry Gibbs
-          – a former IRS commissioner and Tax Analysts board member, now a
-          senior counsel at Miller & Chevalier, and a longstanding pillar of the
-          tax community. As part of our 50th Anniversary, Tax Analysts launched
-          Taxing Issues, a webinar series though which we have brought the tax
-          community together with key policymakers to discuss leading issues of
-          tax policy and administration. It has been incredibly well-received
-          and will continue next year. Below are sponsorship opportunities for
-          our partners to support this work and to provide a forum for the
-          debate on tax policy.
-        </p>
-        <br /><br />
-        <hr />
-      </div>
+    <div class="card bg-light my-3" style="width: 25%">
+        <div class="card-header font-weight-bold">Inaccurate information</div>
+        <div class="card-body">
+            <p class="card-text text-justify">We are not responsible for the refund of tax where the customer has provided information which is false, inaccurate, incorrect, insufficient or misleading in any way or the customer has already received a refund The tax authority information
+                leads to a decision that the customer is not due a refund. Where there is a possible case for appeal within the law, such measures will be taken by taxnotes, where the customer information enables it to do so.
+            </p>
+        </div>
     </div>
 
-    <footer class="tm-footer">
-      <b>&copy; COPYRIGHT 2020 TAX NOTES</b>
-      <br />
-      Any Unauthorized reproduction or distribution of the contents of this
-      website is a violation of
-      <br />
-      copyright law and may result in severe civil and criminal penalties. All
-      rights reserved.
-    </footer>
-  </body>
-</html>
+    <div class="card bg-light my-3" style="width: 25%">
+        <div class="card-header font-weight-bold">Additional Document Policy</div>
+        <div class="card-body">
+            <p class="card-text text-justify">
+                For additional value-added services provided by taxnotes to the customer, additional fees will be charged to cover associated administrative and management costs. Such additional services include, but are not limited to, document retrieval, personal number
+                (e.g. SSN, PPS, NIN, TFN) verification, residency and non-residency document organisation where relevant, amendment preparation for previous returns, and certain payment options.
+            </p>
+        </div>
+    </div>
+
+    <div class="card bg-light my-3" style="width: 25%">
+        <div class="card-header font-weight-bold">Post Registration Policy</div>
+        <div class="card-body">
+            <p class="card-text text-justify">If, after registering for tax number services with taxnotes you wish to withdraw your application and the application has not been submitted to the relevant authorities, an administration fee applies and all processing charges of banks for
+                returning the rest of the payment should be at the expense of the customer. In cases where taxnotes already submitted the application on the customer's behalf, the application fee is non-refundable.I understand that I will be contacted
+                by taxnotes after using any of the online tax calculator(s).</p>
+        </div>
+    </div>
+
+
+</div>
+</div>
+
+<footer class="tm-footer ">
+    <b>&copy; COPYRIGHT 2020 TAX NOTES</b>
+    <br> Any Unauthorized reproduction or distribution of the contents of this website is a violation of
+    <br> copyright law and may result in severe civil and criminal penalties. All rights reserved.
+</footer>
+
+
+
+
+{% endblock %}
