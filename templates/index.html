@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <title>INDEX</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="{{ url_for('static',filename='main.css') }}" />
@@ -20,9 +21,11 @@
                     <li><a class="h6 text-uppercase" href="/home"><strong>Home</strong></a></li>
                     <li><a class="h6 text-uppercase" href="/login"><strong>Login</strong></a></li>
                     <li><a class="h6 text-uppercase" href="/register"><strong>Register</strong></a></li>
+                    <li><a class="h6 text-uppercase" href="/form"><strong>Tax Form</strong></a></li>
                     <li><a class="h6 text-uppercase" href="/aboutus"><strong>About Us</strong></a></li>
                     <li><a class="h6 text-uppercase" href="/contactus"><strong>Contact Us</strong></a></li>
                     <li><a class="h6 text-uppercase" href="/term"><strong>Terms & conditions</strong></a></li>
+                    <li><a class="h6 text-uppercase" href="/logout"><strong>Logout</strong></a></li>
                 </ul>
             </nav>
         </div>
@@ -85,3 +88,4 @@
     ></script>
   </body>
 </html>
+{% block content %}{% endblock %}

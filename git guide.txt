@@ -1,8 +1,14 @@
-always do "git pull" first
-git pull
-git status
+always do "git pull" first before making any change
 
-after making changes
+After making changes:
 git add .
 git commit -m "any message here about changes"
-git push
+git push origin "branch_name"
+
+To use project with flask 
+
+Do: 
+ pip install flask
+export FLASK_APP=app.py
+export FLASK_ENV=development
+flask run
