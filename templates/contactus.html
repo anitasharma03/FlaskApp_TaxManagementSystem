@@ -1,6 +1,5 @@
 <script>
     function sendMessage() {
-        debugger;
         const myForm = document.getElementById('contact-us-form');
         const required = Array.prototype.slice.call(myForm.querySelectorAll("[required]"))
         const isFormValid = required.every((input) => input.value !== '');
