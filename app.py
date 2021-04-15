@@ -28,22 +28,13 @@ def login():
     return render_template('login.html')
 
 
-login_manager = LoginManager()
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.get(user_id)
-
-
 @app.route('/check_login', methods=['GET', 'POST'])
 def check_login():
     if request.method == 'POST':
-        username = user.query.get(form.username.data)
+        username = request.form['uname']
         password = request.form['psw']
     for i in accounts.find():
         if i["email"] == username and bcrypt.check_password_hash(i["password"], password):
-            login_user(username)
             return redirect("/home")
         else:
             continue
@@ -90,6 +81,7 @@ def term():
 @app.route('/form')
 def form():
     return render_template('tax_form.html')
+
 
 @app.route('/profile')
 def profile():
