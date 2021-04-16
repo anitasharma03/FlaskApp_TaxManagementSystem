@@ -1,50 +1,70 @@
-{% extends "index.html" %} {% block content %}
-<script>
-    function proceed() {
-        alert("User has been registered");
-        window.location.href = "/login"
-    }
-</script>
-<link rel="stylesheet" href="{{ url_for('static',filename='register_style.css') }}" />
-<div id="banner" class="desktop">
-    <img class="banner-image" src="{{ url_for('static',filename='Images/banner3.jpg') }}" />
-</div>
-<br /><br />
-<h2 style="text-align: center" class="text-uppercase"><strong>Registration Form</strong></h2>
+<!DOCTYPE html>
+<html lang="en">
 
-<form action="/make_account" method="POST">
-    <div class="container">
-        <p class="text-danger d-inline">NOTE: </p>
-        <h6 class="d-inline ">Please fill in this form to create an account.</h6>
-        <hr>
-        <div class="form-group">
-            <label for="email"><b>Email Address</b></label>
-            <input class="form-control my-2" type="email" placeholder="Enter Email" name="email" id="email" required />
+<head>
+    <title>Registration Form</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='main.css') }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='register_style.css') }}" />
+</head>
 
-            <label for="psw"><b>Password</b></label>
-            <input class="form-control my-2" type="password" placeholder="Enter Password" name="psw" id="psw" required />
-
-            <label for="psw-repeat"><b>Repeat Password</b></label>
-            <input class="form-control my-2" type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required />
-            <hr />
+<body>
+    <header class="tm-header">
+        <div class="tm-container">
+            <a class="navbar-brand" href="/home"><img src="{{ url_for('static',filename='Images/tax-logo.png') }}" alt="logo" width="200" /></a>
+            <nav class="tm-nav">
+                <ul style="margin-top: 24px;">
+                    <li><a class="h6 text-uppercase" href="/login"><strong>Login</strong></a></li>
+                    <li><a class="h6 text-uppercase" href="/register"><strong>Register</strong></a></li>
+                </ul>
+            </nav>
         </div>
-        <input class="mx-2" type="checkbox" checked="checked" name="remember" required>By creating an account you agree to our <a href="term">Terms & Privacy</a>.
+    </header>
+    <main>
+        <div id="banner" class="desktop">
+            <img class="banner-image" src="{{ url_for('static',filename='Images/landing_banner.jpeg') }}" style="height:400px;" />
+        </div>
+        <br /><br />
+        <h2 style="text-align: center" class="text-uppercase"><strong>Registration Form</strong></h2>
 
-        <div class="d-flex justify-content-center py-3">
-            <button class="submit-button w-25" type="submit">
+        <form action="/make_account" method="POST">
+            <div class="container">
+                <p class="text-danger d-inline">NOTE: </p>
+                <h6 class="d-inline ">Please fill in this form to create an account.</h6>
+                <hr>
+                <div class="form-group">
+                    <label for="email"><b>Email Address</b></label>
+                    <input class="form-control my-2" type="email" placeholder="Enter Email" name="email" id="email" required />
+
+                    <label for="psw"><b>Password</b></label>
+                    <input class="form-control my-2" type="password" placeholder="Enter Password" name="psw" id="psw" required />
+
+                    <label for="psw-repeat"><b>Repeat Password</b></label>
+                    <input class="form-control my-2" type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required />
+                    <hr />
+                </div>
+                <input class="mx-2" type="checkbox" checked="checked" name="remember" required>By creating an account you agree to our <a href="term">Terms & Privacy</a>
+
+                <div class="d-flex justify-content-center py-3">
+                    <button class="submit-button w-25" type="submit">
                 Register
             </button>
-        </div>
-    </div>
+                </div>
+            </div>
 
-    <div class="container signin">
-        <p class="m-0">Already have an account? <a href="login">Sign in</a>.</p>
-    </div>
-</form>
+            <div class="container signin">
+                <p class="m-0">Already have an account? <a href="login">Sign in</a>.</p>
+            </div>
+        </form>
 
-<footer class="tm-footer">
-    <b>&copy; COPYRIGHT 2020 TAX NOTES</b>
-    <br /> Any Unauthorized reproduction or distribution of the contents of this website is a violation of
-    <br /> copyright law and may result in severe civil and criminal penalties. All rights reserved.
-</footer>
-{% endblock %}
+        <footer class="tm-footer">
+            <b>&copy; COPYRIGHT 2020 TAX NOTES</b>
+            <br /> Any Unauthorized reproduction or distribution of the contents of this website is a violation of
+            <br /> copyright law and may result in severe civil and criminal penalties. All rights reserved.
+        </footer>
+    </main>
+</body>
+
+</html>

@@ -15,6 +15,11 @@ bcrypt = Bcrypt()
 
 @app.route('/')
 
+@app.route('/landing')
+def landing():
+        return render_template('landing_page.html')
+
+
 @app.route('/home')
 def home():
         return render_template('home.html')
@@ -23,7 +28,7 @@ def home():
 @app.route('/login')
 def login():
     if 'username' not in session:
-        return render_template('login.html')
+        return render_template('landing_page.html')
     else:
         return render_template('home.html')
 
@@ -58,7 +63,7 @@ def make_account():
                 "password": password
             }
             accounts.insert_one(credentials)
-            return redirect("/home")
+            return redirect("/landing")
         return redirect("/register")
 
 

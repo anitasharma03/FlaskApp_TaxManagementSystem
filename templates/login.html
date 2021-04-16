@@ -3,12 +3,8 @@
     function alertUser() {
         alert("Please give us a call at +1 800-5552-356 to reset the password.")
     }
-
-    function proceed(e) {
-        // TODO: add logic to proceed if right username and password.
-        window.location.href = '/tax_form';
-    }
 </script>
+
 <link rel="stylesheet" href="{{ url_for('static',filename='login_style.css') }}" />
 <div id="banner" class="desktop">
     <img class="banner-image" src="{{ url_for('static',filename='Images/banner3.jpg') }}" />
@@ -32,7 +28,7 @@
         </div>
 
         <div class="d-flex">
-            <button onclick="proceed(event)" class="submit-button" type="submit">Login</button>
+            <button class="submit-button" type="submit">Login</button>
             <button type="button" class="cancel-button">Cancel</button>
         </div>
         <div class="d-flex justify-content-center my-3">
