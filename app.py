@@ -8,6 +8,7 @@ client = MongoClient(
     'mongodb+srv://test:test@cluster0.fcu7b.mongodb.net/test?retryWrites=true&w=majority&authMechanism=SCRAM-SHA-1&ssl=true&ssl_cert_reqs=CERT_NONE')
 db = client.taxmanager
 accounts = db.accounts
+user_info = db.formDetails
 
 app = Flask(__name__)
 app.secret_key = 'secret_key'
@@ -66,7 +67,7 @@ def make_account():
         password_repeat = request.form['psw-repeat']
         if password == password_repeat:
             password = bcrypt.generate_password_hash(password).decode('utf-8')
-            session["username"]=email
+            session["username"] = email
             credentials = {
                 "email": email,
                 "password": password
@@ -106,8 +107,18 @@ def form():
 
 @app.route('/profile')
 def profile():
-    if 'username' in session:
-        return render_template('profile.html')
+    if session['username']:
+        username = session["username"]
+        for i in user_info.find():
+            if i["email"] == username:
+                detail = {
+                    "firstname": i["firstname"],
+                    "lastname": i["lastname"],
+                    "email": i["email"],
+                    "phone": i["phone"],
+                    "address": i["address"]
+                }
+        return render_template('profile.html', accounts=user_info, detail=detail)
     else:
         return redirect("/landing")
 
