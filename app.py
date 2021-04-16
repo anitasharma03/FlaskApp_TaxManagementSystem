@@ -20,30 +20,11 @@ bcrypt = Bcrypt()
 
 @app.route('/landing')
 def landing():
-        return render_template('landing_page.html')
-
-
-@app.route('/home')
-def home():
-    filed_taxes = form_details.find()
-    username = session["username"]
-    return render_template('home.html', filed_taxes=filed_taxes, username=username)
-
-
-# @app.route('/landing')
-# def login():
-#     if 'username' not in session:
-#         return render_template('landing_page.html')
-#     else:
-#         return render_template('home.html')
-
-@app.route('/login')
-def login():
     if 'username' not in session:
         return render_template('landing_page.html')
     else:
         return render_template('home.html')
-
+        
 
 @app.route('/check_login', methods=['GET', 'POST'])
 def check_login():
@@ -59,6 +40,12 @@ def check_login():
             continue
     flash('Wrong username or password. Please retry')
     return redirect("/landing")
+
+
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
 
 @app.route('/register')
 def register():
@@ -117,7 +104,6 @@ def submit_form():
         address = request.form['address']
         address2 = request.form['address2']
         sex = request.form['sex']
-        # image = request.['image']
         sin = request.form['sin']
         netincome = request.form['NetIncome']
         extraincome = request.form['ExtraIncome']
@@ -133,7 +119,6 @@ def submit_form():
             "address": address,
             "address2": address2,
             "sex": sex,
-            # "image": image,
             "sin": sin,
             "netincome": netincome,
             "extraincome": extraincome,
@@ -143,7 +128,8 @@ def submit_form():
             "filed_on": filed_on
         }
         form_details.insert_one(details)
-        return redirect("/home")
+        flash('Your Details has been submitted')
+        return redirect("/detail")
     return redirect("/home")
  
 
@@ -170,6 +156,11 @@ def update_profile():
     return redirect("/update_profile")
 
 
+@app.route('/detail')
+def detail():
+    filed_taxes = form_details.find()
+    username = session["username"]
+    return render_template('showTaxDetail.html', filed_taxes=filed_taxes, username=username)
 
 @app.route('/logout')
 def logout():

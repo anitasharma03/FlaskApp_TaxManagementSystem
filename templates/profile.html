@@ -1,13 +1,18 @@
-{% extends 'index.html' %}{% block content %}
+{% extends 'index.html' %}{% block content %} {% for i in details %}
+<script>
+    console.log(i);
+    document.getElementById("savedFname").value = i['firstName'];
+</script>
+{% endif %} {% endfor %}
+
 
 <link rel="stylesheet" href="{{ url_for('static',filename='profile.css') }}" />
 
 <div id="banner" class="desktop">
     <img class="banner-image" src="{{ url_for('static',filename='Images/banner3.jpg') }}" />
 </div>
-<hr />
+<br><br>
 <h2 style="text-align: center" class="text-uppercase"><strong>Your Profile</strong></h2>
-
 <form>
     <div class="form-container">
         <div class="imgcontainer">
@@ -15,8 +20,9 @@
         </div><br>
         <p class="text-danger d-inline">NOTE: </p>
         <h6 id="emailHelp" class="d-inline ">We'll never share your information with anyone else.</h6>
-        <hr>
-
+        <hr> {% for i in filed_taxes %} {% if i["email"]==username %}
+        <h1>{{i['filed_on']}}</h1>
+        {% endif %} {% endfor %}
         <div class="form-group">
             <label for="savedFname"><b>First Name</b></label>
             <input class="form-control my-2 " type="text" class="form-control" id="savedFname" required/>
@@ -52,8 +58,8 @@
         <div id="explore">
             <p id="txt1">Explore</p>
             <a class="link" href="/aboutus">About Us</a>
-            <a class="link" href="/contactus">Conatct Us</a>
-            <a class="link-terms" href="/term">Terms & Conditions</a>
+            <a class="link" href="/contactus">Contact Us</a>
+            <a class="link" href="/term">Our Terms</a>
         </div>
         <div id="visit">
             <p id="txt2">Visit</p>
