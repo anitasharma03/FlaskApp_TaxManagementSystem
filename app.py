@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect, session
+from flask import Flask, render_template, url_for, request, redirect, session,flash
 from flask_bcrypt import Bcrypt
 from pymongo import MongoClient
 from flask_login import LoginManager, login_user, current_user
@@ -30,18 +30,17 @@ def home():
     return render_template('home.html', filed_taxes=filed_taxes, username=username)
 
 
-@app.route('/landing')
-def login():
-    if 'username' not in session:
-        return render_template('landing_page.html')
-    else:
-        return render_template('home.html')
-
+# @app.route('/landing')
+# def login():
+#     if 'username' not in session:
+#         return render_template('landing_page.html')
+#     else:
+#         return render_template('home.html')
 
 @app.route('/login')
 def login():
     if 'username' not in session:
-        return render_template('login.html')
+        return render_template('landing_page.html')
     else:
         return render_template('home.html')
 
@@ -107,7 +106,6 @@ def form():
         return render_template('tax_form.html')
     else:
         return redirect("/landing")
- 
 
 @app.route('/submit_form', methods=['GET', 'POST'])
 def submit_form():
@@ -147,8 +145,7 @@ def submit_form():
         form_details.insert_one(details)
         return redirect("/home")
     return redirect("/home")
-
-
+ 
 
 @app.route('/profile')
 def profile():
@@ -171,6 +168,7 @@ def update_profile():
         # profile.insert_one(data)
         return flash('User has been updated') 
     return redirect("/update_profile")
+
 
 
 @app.route('/logout')

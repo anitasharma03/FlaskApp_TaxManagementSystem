@@ -12,10 +12,29 @@
         <img class="banner-image" src="{{ url_for('static',filename='Images/banner3.jpg') }}" />
     </div>
     <hr />
-    <br />
-    <section>
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-    </section>
+    <h2>Filed Taxes</h2>
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Filed On</th>
+        <th scope="col">Net Income</th>
+        <th scope="col">Expenses</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in filed_taxes %} {% if i["email"]==username %}
+      <tr>
+        <th scope="row">1</th>
+        <td>{{ i['filed_on'] }}</td>
+        <td>{{ i['netincome'] }}</td>
+        <td>{{ i['expenses'] }}</td>
+        <td><button class="btn btn-info">Details</button></td>
+      </tr>
+      {% endif %} {% endfor %}
+    </tbody>
+  </table>
     <div id="container-footer" class="mt-5">
         <div id="part1">
             <div id="companyinfo"> <a id="sitelink" href="#">TaxNotes</a>
