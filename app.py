@@ -82,8 +82,7 @@ def form():
     if 'username' in session:
         return render_template('tax_form.html')
     else:
-        return redirect("/login")
- 
+        return redirect("/login") 
 
 @app.route('/profile')
 def profile():
