@@ -1,7 +1,9 @@
-from flask import Flask, render_template, url_for, request, redirect, session
+from flask import Flask, render_template, flash, url_for, request, redirect, session
 from flask_bcrypt import Bcrypt
 from pymongo import MongoClient
 from flask_login import LoginManager, login_user, current_user
+from bson.objectid import ObjectId
+
 client = MongoClient(
     'mongodb+srv://test:test@cluster0.fcu7b.mongodb.net/test?retryWrites=true&w=majority&authMechanism=SCRAM-SHA-1&ssl=true&ssl_cert_reqs=CERT_NONE')
 db = client.taxmanager
@@ -14,18 +16,23 @@ bcrypt = Bcrypt()
 
 
 @app.route('/')
+@app.route('/landing')
+def landing():
+    return render_template('landing_page.html')
+
 
 @app.route('/home')
 def home():
-        return render_template('home.html')
+    return render_template('home.html')
 
 
 @app.route('/login')
 def login():
     if 'username' not in session:
-        return render_template('login.html')
+        return render_template('landing_page.html')
     else:
         return render_template('home.html')
+
 
 @app.route('/check_login', methods=['GET', 'POST'])
 def check_login():
@@ -35,15 +42,21 @@ def check_login():
     for i in accounts.find():
         if i["email"] == username and bcrypt.check_password_hash(i["password"], password):
             session['username'] = username
+            flash('You were successfully logged in')
             return redirect("/home")
         else:
             continue
-    return redirect("/login")
+    flash('Wrong username or password. Please retry')
+    return redirect("/landing")
 
 
 @app.route('/register')
 def register():
-    return render_template('register.html')
+    if 'username' not in session:
+        return render_template('register.html')
+    else:
+        return render_template('home.html')
+
 
 @app.route('/make_account', methods=['GET', 'POST'])
 def make_account():
@@ -53,12 +66,18 @@ def make_account():
         password_repeat = request.form['psw-repeat']
         if password == password_repeat:
             password = bcrypt.generate_password_hash(password).decode('utf-8')
+            session["username"]=email
             credentials = {
                 "email": email,
                 "password": password
             }
             accounts.insert_one(credentials)
-            return redirect("/home")
+            session["username"] = email
+            flash('User has been registered. You can Login now')
+            return redirect("/landing")
+        else:
+            flash('Passwords do not match. Please retry')
+            return redirect("/register")
         return redirect("/register")
 
 
@@ -70,8 +89,8 @@ def aboutus():
 @app.route('/contactus')
 def contactus():
     return render_template('contactus.html')
-    
-    
+
+
 @app.route('/term')
 def term():
     return render_template('term.html')
@@ -82,17 +101,34 @@ def form():
     if 'username' in session:
         return render_template('tax_form.html')
     else:
-        return redirect("/login") 
+        return redirect("/landing")
+
 
 @app.route('/profile')
 def profile():
     if 'username' in session:
         return render_template('profile.html')
     else:
-        return redirect("/login")
+        return redirect("/landing")
+
+
+@app.route('/update_profile', methods=['POST'])
+def update_profile():
+    if request.method == 'POST':
+        data = {
+            "firstName": request.form['savedFname'],
+            "lastName": request.form['savedLname'],
+            "email": request.form['savedEmail'],
+            "number": request.form['savedNumber'],
+            "address": request.form['savedAddress'],
+        }
+        # TODO: update database
+        # profile.insert_one(data)
+        return flash('User has been updated')
+    return redirect("/update_profile")
+
 
 @app.route('/logout')
 def logout():
     session.pop('username', None)
     return render_template('logout.html')
-
