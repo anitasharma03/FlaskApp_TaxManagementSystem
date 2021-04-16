@@ -1,15 +1,23 @@
 {% extends "index.html" %}{% block content %}
-<main>
-    <div style="height: 250px; margin-top: 240px;">
-
-        <h1 class="text-center">You Logged out</h1>
-
+<style>
+    body {
+        background-image: url("https://onlineandmobileaccountants.com/wp-content/uploads/sites/3734/2016/03/background-2.jpg");
+        background-repeat: no-repeat;
+    }
+</style>
+<main class="lg-container">
+    <div style="height: 400px; margin-top: 220px;">
+        <h1 class="text-center"><strong>You Logged out</strong></h1>
+        <form>
+            <div class="d-flex justify-content-center py-3">
+                <button class="submit-button w-25" type="submit"><a href="landing" style="color: white; text-decoration: none;">Login Again</a></button>
+            </div>
+        </form>
     </div>
     <footer class="tm-footer">
         <b>&copy; COPYRIGHT 2020 TAX NOTES</b>
         <br /> Any Unauthorized reproduction or distribution of the contents of this website is a violation of
         <br /> copyright law and may result in severe civil and criminal penalties. All rights reserved.
     </footer>
-
 </main>
 {% endblock %}
