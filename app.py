@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect, session
+from flask import Flask, render_template,flash, url_for, request, redirect, session
 from flask_bcrypt import Bcrypt
 from pymongo import MongoClient
 from flask_login import LoginManager, login_user, current_user
@@ -25,7 +25,7 @@ def home():
         return render_template('home.html')
 
 
-@app.route('/login')
+@app.route('/landing')
 def login():
     if 'username' not in session:
         return render_template('landing_page.html')
@@ -43,7 +43,7 @@ def check_login():
             return redirect("/home")
         else:
             continue
-    return redirect("/login")
+    return redirect("/landing")
 
 
 @app.route('/register')
@@ -87,7 +87,7 @@ def form():
     if 'username' in session:
         return render_template('tax_form.html')
     else:
-        return redirect("/login")
+        return redirect("/landing")
  
 
 @app.route('/profile')
@@ -95,7 +95,7 @@ def profile():
     if 'username' in session:
         return render_template('profile.html')
     else:
-        return redirect("/login")
+        return redirect("/landing")
 
 @app.route('/logout')
 def logout():
