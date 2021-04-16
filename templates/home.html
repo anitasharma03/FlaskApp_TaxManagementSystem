@@ -1,4 +1,12 @@
-{% extends "index.html" %}{% block content %}
+{% extends "index.html" %}{% block content %} {% with messages = get_flashed_messages() %} {% if messages %}
+<script>
+    var messages = "{{messages | safe}}";
+    debugger;
+    if (messages.length) {
+        alert(messages.slice(2, -2))
+    }
+</script>
+{% endif %} {% endwith %}
 <main>
     <div id="banner" class="desktop">
         <img class="banner-image" src="{{ url_for('static',filename='Images/banner3.jpg') }}" />
@@ -16,7 +24,6 @@
             </div>
             <div id="explore">
                 <p id="txt1">Explore</p>
-                <a class="link" href="/landing">Landing</a>
                 <a class="link" href="/aboutus">About Us</a>
                 <a class="link" href="/contactus">Conatct Us</a>
                 <a class="link-terms" href="/term">Terms & Conditions</a>

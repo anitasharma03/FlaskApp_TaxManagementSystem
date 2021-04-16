@@ -1,3 +1,12 @@
+{% with messages = get_flashed_messages() %} {% if messages %}
+<script>
+    var messages = "{{messages | safe}}";
+    debugger;
+    if (messages.length) {
+        alert(messages.slice(2, -2))
+    }
+</script>
+{% endif %} {% endwith %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +22,7 @@
 <body>
     <header class="tm-header">
         <div class="tm-container">
-            <a class="navbar-brand" href="/home"><img src="{{ url_for('static',filename='Images/tax-logo.png') }}" alt="logo" width="200" /></a>
+            <a class="navbar-brand" href="/home"><img src="{{ url_for('static',filename='Images/tax-logo.png') }}" alt="logo" width="160" /></a>
             <nav class="tm-nav">
                 <ul style="margin-top: 24px;">
                     <li><a class="h6 text-uppercase" href="/landing"><strong>Login</strong></a></li>
@@ -45,7 +54,7 @@
                     <input class="form-control my-2" type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required />
                     <hr />
                 </div>
-                <input class="mx-2" type="checkbox" checked="checked" name="remember" required>By creating an account you agree to our <a href="term">Terms & Privacy</a>
+                <input class="mx-2" type="checkbox" checked="checked" name="remember" required>By creating an account you agree to our <a href="#">Terms & Privacy</a>
 
                 <div class="d-flex justify-content-center py-3">
                     <button class="submit-button w-25" type="submit">
@@ -55,7 +64,7 @@
             </div>
 
             <div class="container signin">
-                <p class="m-0">Already have an account? <a href="login">Sign in</a>.</p>
+                <p class="m-0">Already have an account? <a href="landing">Sign in</a>.</p>
             </div>
         </form>
 
