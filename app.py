@@ -1,13 +1,14 @@
-from flask import Flask, render_template,flash, url_for, request, redirect, session
+from flask import Flask, render_template, url_for, request, redirect, session
 from flask_bcrypt import Bcrypt
 from pymongo import MongoClient
 from flask_login import LoginManager, login_user, current_user
-from bson.objectid import ObjectId
+import datetime
 
 client = MongoClient(
     'mongodb+srv://test:test@cluster0.fcu7b.mongodb.net/test?retryWrites=true&w=majority&authMechanism=SCRAM-SHA-1&ssl=true&ssl_cert_reqs=CERT_NONE')
 db = client.taxmanager
 accounts = db.accounts
+form_details = db.formDetails
 
 app = Flask(__name__)
 app.secret_key = 'secret_key'
@@ -24,7 +25,9 @@ def landing():
 
 @app.route('/home')
 def home():
-        return render_template('home.html')
+    filed_taxes = form_details.find()
+    username = session["username"]
+    return render_template('home.html', filed_taxes=filed_taxes, username=username)
 
 
 @app.route('/landing')
@@ -33,6 +36,15 @@ def login():
         return render_template('landing_page.html')
     else:
         return render_template('home.html')
+
+
+@app.route('/login')
+def login():
+    if 'username' not in session:
+        return render_template('login.html')
+    else:
+        return render_template('home.html')
+
 
 @app.route('/check_login', methods=['GET', 'POST'])
 def check_login():
@@ -97,6 +109,47 @@ def form():
         return redirect("/landing")
  
 
+@app.route('/submit_form', methods=['GET', 'POST'])
+def submit_form():
+    if request.method == 'POST':
+        fname = request.form['firstname']
+        lname = request.form['lastname']
+        email = request.form['email']
+        phone = request.form['Phone']
+        address = request.form['address']
+        address2 = request.form['address2']
+        sex = request.form['sex']
+        # image = request.['image']
+        sin = request.form['sin']
+        netincome = request.form['NetIncome']
+        extraincome = request.form['ExtraIncome']
+        expenses = request.form['expenses']
+        losses = request.form['losses']
+        rrsp = request.form['rrsp']
+        filed_on = datetime.datetime.now()
+        details = {
+            "firstname": fname,
+            "lastname": lname,
+            "email": email,
+            "phone": phone,
+            "address": address,
+            "address2": address2,
+            "sex": sex,
+            # "image": image,
+            "sin": sin,
+            "netincome": netincome,
+            "extraincome": extraincome,
+            "expenses": expenses,
+            "losses": losses,
+            "rrsp": rrsp,
+            "filed_on": filed_on
+        }
+        form_details.insert_one(details)
+        return redirect("/home")
+    return redirect("/home")
+
+
+
 @app.route('/profile')
 def profile():
     if 'username' in session:
@@ -118,7 +171,6 @@ def update_profile():
         # profile.insert_one(data)
         return flash('User has been updated') 
     return redirect("/update_profile")
-
 
 
 @app.route('/logout')
