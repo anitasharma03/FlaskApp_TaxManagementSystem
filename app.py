@@ -2,6 +2,8 @@ from flask import Flask, render_template,flash, url_for, request, redirect, sess
 from flask_bcrypt import Bcrypt
 from pymongo import MongoClient
 from flask_login import LoginManager, login_user, current_user
+from bson.objectid import ObjectId
+
 client = MongoClient(
     'mongodb+srv://test:test@cluster0.fcu7b.mongodb.net/test?retryWrites=true&w=majority&authMechanism=SCRAM-SHA-1&ssl=true&ssl_cert_reqs=CERT_NONE')
 db = client.taxmanager
@@ -40,11 +42,12 @@ def check_login():
     for i in accounts.find():
         if i["email"] == username and bcrypt.check_password_hash(i["password"], password):
             session['username'] = username
+            flash('You were successfully logged in')
             return redirect("/home")
         else:
             continue
+    flash('Wrong username or password. Please retry')
     return redirect("/landing")
-
 
 @app.route('/register')
 def register():
@@ -63,7 +66,11 @@ def make_account():
                 "password": password
             }
             accounts.insert_one(credentials)
+            flash('User has been registered. You can Login now')
             return redirect("/landing")
+        else:
+            flash('Passwords do not match. Please retry')
+            return redirect("/register")
         return redirect("/register")
 
 
@@ -96,6 +103,23 @@ def profile():
         return render_template('profile.html')
     else:
         return redirect("/landing")
+
+@app.route('/update_profile', methods=['POST'])
+def update_profile():
+    if request.method == 'POST':
+        data = {
+            "firstName": request.form['savedFname'],
+            "lastName": request.form['savedLname'],
+            "email": request.form['savedEmail'],
+            "number": request.form['savedNumber'],
+            "address": request.form['savedAddress'],
+        }
+        # TODO: update database
+        # profile.insert_one(data)
+        return flash('User has been updated') 
+    return redirect("/update_profile")
+
+
 
 @app.route('/logout')
 def logout():
