@@ -1,38 +1,84 @@
-{% extends "index.html" %}{% block content %}
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-/>
-<link rel="stylesheet" href="{{ url_for('static',filename='main.css') }}" />
-<body class="bodybg1">
-  <main>
-    <div id="banner" class="desktop">
-      <img
-        class="banner-image"
-        src="{{ url_for('static',filename='Images/banner3.jpg') }}"
-      />
-    </div>
-    <hr />
-    <br />
-    <button
-      class="button1"
-      type="submit"
-      style="margin-left: 600px; margin-top: 300px"
-    >
-      <b>Apply For Tax here</b>
-    </button>
-    <section>
-      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-    </section>
-    <footer class="tm-footer">
-      <b>&copy; COPYRIGHT 2020 TAX NOTES</b>
-      <br />
-      Any Unauthorized reproduction or distribution of the contents of this
-      website is a violation of <br />
-      copyright law and may result in severe civil and criminal penalties. All
-      rights reserved.
-    </footer>
-  </main>
+{% with messages = get_flashed_messages() %} {% if messages %}
+<script>
+    var messages = "{{messages | safe}}";
+    debugger;
+    if (messages.length) {
+        alert(messages.slice(2, -2))
+    }
+</script>
+{% endif %} {% endwith %}
+<!DOCTYPE html>
+<html lang="en">
 
-  {% endblock %}
+<head>
+    <title>Landing Page</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='main.css') }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='login_style.css') }}" />
+
+</head>
+
+<body>
+    <header class="tm-header">
+        <div class="tm-container">
+            <a class="navbar-brand" href="/home"><img src="{{ url_for('static',filename='Images/tax-logo.png') }}" alt="logo" width="160" /></a>
+            <nav class="tm-nav">
+                <ul style="margin-top: 24px;">
+                    <li><a class="h6 text-uppercase" href="/landing"><strong>Login</strong></a></li>
+                    <li><a class="h6 text-uppercase" href="/register"><strong>Register</strong></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div id="banner" class="desktop">
+            <img class="banner-image" src="{{ url_for('static',filename='Images/landing_banner.jpeg') }}" style="height:400px;" />
+        </div>
+
+
+        <script>
+            function alertUser() {
+                alert("Please give us a call at +1 800-5552-356 to reset the password.")
+            }
+        </script>
+        <br /><br />
+        <h2 style="text-align: center" class="text-uppercase"><strong>Login Form</strong></h2>
+
+        <form action="/check_login" method="POST">
+            <div class="form-container">
+                <div class="imgcontainer">
+                    <img src="{{ url_for('static',filename='Images/avatar2.png') }}" alt="Avatar" class="avatar fadeIn first" />
+                </div>
+
+                <div class="form-group">
+                    <label for="email"><b>Email Address</b></label>
+                    <input class="form-control" type="email" placeholder="Enter Your Email ID" name="email" required />
+
+                    <label for="psw"><b>Password</b></label>
+                    <input class="form-control" type="password" placeholder="Enter Password" name="psw" required />
+                    <input type="checkbox" checked="checked" name="remember" /> Remember me
+                </div>
+
+                <div class="d-flex">
+                    <button onclick="proceed(event)" class="submit-button" type="submit">Login</button>
+                    <button type="button" class="cancel-button">Cancel</button>
+                </div>
+                <div class="d-flex justify-content-center my-3">
+                    <a onclick="alertUser()" class="text-primary">Forgot password?</a>
+                </div>
+                <div>
+                    <p class="py-2 text-center"> Don't have an account? <a href="register">Register Here</a></p>
+                </div>
+            </div>
+        </form>
+
+        <footer class="tm-footer">
+            <b>&copy; COPYRIGHT 2020 TAX NOTES</b>
+            <br /> Any Unauthorized reproduction or distribution of the contents of this website is a violation of <br /> copyright law and may result in severe civil and criminal penalties. All rights reserved.
+        </footer>
+    </main>
 </body>
+
+</html>
