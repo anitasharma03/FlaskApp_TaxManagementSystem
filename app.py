@@ -34,7 +34,7 @@ def login():
         return render_template('landing_page.html')
     else:
         return render_template('home.html')
-
+        
 
 @app.route('/check_login', methods=['GET', 'POST'])
 def check_login():
@@ -50,6 +50,11 @@ def check_login():
             continue
     flash('Wrong username or password. Please retry')
     return redirect("/landing")
+
+
+@app.route('/home')
+def home():
+    return render_template('home.html')
 
 
 @app.route('/register')
@@ -151,7 +156,8 @@ def submit_form():
             "Total Tax": calc_tax(losses, rrsp, netincome, extraincome, expenses)
         }
         user_info.insert_one(details)
-        return redirect("/home")
+        flash('Your Details has been submitted')
+        return redirect("/detail")
     return redirect("/home")
 
 
@@ -176,6 +182,12 @@ def update_profile():
         return flash('User has been updated')
     return redirect("/update_profile")
 
+
+@app.route('/detail')
+def detail():
+    filed_taxes = form_details.find()
+    username = session["username"]
+    return render_template('showTaxDetail.html', filed_taxes=filed_taxes, username=username)
 
 @app.route('/logout')
 def logout():
