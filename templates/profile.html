@@ -1,9 +1,18 @@
-{% extends 'index.html' %}{% block content %} {% for i in details %}
+ {% extends "index.html" %}{% block content %} {% with messages = get_flashed_messages() %} {% if messages %}
 <script>
-    console.log(i);
-    document.getElementById("savedFname").value = i['firstName'];
+    var messages = "{{messages | safe}}";
+    debugger;
+    if (messages.length) {
+        alert(messages.slice(2, -2))
+    }
 </script>
-{% endif %} {% endfor %}
+{% endif %} {% endwith %} {% for i in profile_detail %}
+<script>
+    debugger;
+    console.log(i);
+    // document.getElementById("savedFname").value = i['firstName'];
+</script>
+{% endfor %}
 
 
 <link rel="stylesheet" href="{{ url_for('static',filename='profile.css') }}" />
@@ -19,10 +28,10 @@
             <img src="{{ url_for('static',filename='Images/profile.png') }}" alt="Profile" class="profile" />
         </div><br>
         <p class="text-danger d-inline">NOTE: </p>
-        <h6 id="emailHelp" class="d-inline ">We'll never share your information with anyone else.</h6>
+        <!-- <h6 id="emailHelp" class="d-inline ">We'll never share your information with anyone else.</h6>
         <hr> {% for i in filed_taxes %} {% if i["email"]==username %}
         <h1>{{i['filed_on']}}</h1>
-        {% endif %} {% endfor %}
+        {% endif %} {% endfor %} -->
         <div class="form-group">
             <label for="savedFname"><b>First Name</b></label>
             <input class="form-control my-2 " type="text" class="form-control" id="savedFname" required/>

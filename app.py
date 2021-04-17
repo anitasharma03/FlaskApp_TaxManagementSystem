@@ -136,7 +136,10 @@ def submit_form():
 @app.route('/profile')
 def profile():
     if 'username' in session:
-        return render_template('profile.html')
+        profile_detail = form_details.find()
+        # form_details.insert_one(details)
+        flash('Youve got your detail') 
+        return render_template('profile.html',profile_detail=profile_detail)
     else:
         return redirect("/landing")
 
