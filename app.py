@@ -60,10 +60,7 @@ def check_login():
 
 @app.route('/register')
 def register():
-    if 'username' not in session:
         return render_template('register.html')
-    else:
-        return render_template('home.html')
 
 
 @app.route('/make_account', methods=['GET', 'POST'])
@@ -154,7 +151,7 @@ def submit_form():
             "losses": losses,
             "rrsp": rrsp,
             "filed_on": filed_on,
-            "Total Tax": calc_tax(losses, rrsp, netincome, extraincome, expenses)
+            "total_tax": calc_tax(losses, rrsp, netincome, extraincome, expenses)
         }
         user_info.insert_one(details)
         flash('Your Details has been submitted')
@@ -213,7 +210,7 @@ def delete_profile():
 
 @app.route('/detail')
 def detail():
-    filed_taxes = form_details.find()
+    filed_taxes = user_info.find()
     username = session["username"]
     return render_template('showTaxDetail.html', filed_taxes=filed_taxes, username=username)
 

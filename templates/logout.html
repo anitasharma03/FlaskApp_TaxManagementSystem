@@ -1,3 +1,9 @@
+<script>
+    function navigate() {
+        debugger;
+        window.location.href = "landing"
+    }
+</script>
 {% extends "index.html" %}{% block content %}
 <style>
     body {
@@ -8,11 +14,9 @@
 <main class="lg-container">
     <div style="height: 400px; margin-top: 220px;">
         <h1 class="text-center"><strong>You Logged out</strong></h1>
-        <form>
-            <div class="d-flex justify-content-center py-3">
-                <button class="submit-button w-25" type="submit"><a href="landing" style="color: white; text-decoration: none;">Login Again</a></button>
-            </div>
-        </form>
+        <div class="d-flex justify-content-center py-3">
+            <button onclick="navigate()" class="submit-button w-25">Login Again</button>
+        </div>
     </div>
     <footer class="tm-footer">
         <b>&copy; COPYRIGHT 2020 TAX NOTES</b>
