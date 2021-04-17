@@ -24,10 +24,9 @@ def landing():
 
 @app.route('/home')
 def home():
-    filed_taxes = form_details.find()
+    filed_taxes = user_info.find()
     username = session["username"]
     return render_template('home.html', filed_taxes=filed_taxes, username=username)
-
 
 @app.route('/login')
 def login():
@@ -107,6 +106,16 @@ def form():
         return redirect("/landing")
 
 
+def calc_tax(losses, rrsp, yearly_income, additional_income, yearly_expense):
+    loss_percentage = (int(losses) / 100) * 1.2
+    rrsp_percent = (int(rrsp)/100)*2.5
+    total_income = int(yearly_income) + \
+        int(additional_income) + int(yearly_expense)
+    tax = (total_income/100) * 15
+    total_tax = loss_percentage + rrsp_percent + tax
+    return total_tax
+
+
 @app.route('/submit_form', methods=['GET', 'POST'])
 def submit_form():
     if request.method == 'POST':
@@ -117,7 +126,6 @@ def submit_form():
         address = request.form['address']
         address2 = request.form['address2']
         sex = request.form['sex']
-        # image = request.['image']
         sin = request.form['sin']
         netincome = request.form['NetIncome']
         extraincome = request.form['ExtraIncome']
@@ -133,16 +141,16 @@ def submit_form():
             "address": address,
             "address2": address2,
             "sex": sex,
-            # "image": image,
             "sin": sin,
             "netincome": netincome,
             "extraincome": extraincome,
             "expenses": expenses,
             "losses": losses,
             "rrsp": rrsp,
-            "filed_on": filed_on
+            "filed_on": filed_on,
+            "Total Tax": calc_tax(losses, rrsp, netincome, extraincome, expenses)
         }
-        form_details.insert_one(details)
+        user_info.insert_one(details)
         return redirect("/home")
     return redirect("/home")
 
@@ -165,8 +173,6 @@ def update_profile():
             "number": request.form['savedNumber'],
             "address": request.form['savedAddress'],
         }
-        # TODO: update database
-        # profile.insert_one(data)
         return flash('User has been updated')
     return redirect("/update_profile")
 
