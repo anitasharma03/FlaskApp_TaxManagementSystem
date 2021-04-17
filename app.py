@@ -203,9 +203,10 @@ def update_profile():
 def delete_profile():
     for i in accounts.find():
         if i['email'] == session["username"]:
+            session.pop('username', None)
             accounts.remove(i)
             flash('Your profile has been deleted')
-            return redirect("/login")
+            return redirect("/landing")
 
 
 @app.route('/detail')

@@ -1,18 +1,16 @@
  {% extends "index.html" %}{% block content %} {% with messages = get_flashed_messages() %} {% if messages %}
 <script>
     var messages = "{{messages | safe}}";
-    debugger;
     if (messages.length) {
         alert(messages.slice(2, -2))
     }
 </script>
-{% endif %} {% endwith %} {% for i in profile_detail %}
+{% endif %} {% endwith %}
 <script>
-    debugger;
-    console.log(i);
-    // document.getElementById("savedFname").value = i['firstName'];
+    function displayMessage() {
+        alert("Please email your documents to update anything in profile");
+    }
 </script>
-{% endfor %}
 
 
 <link rel="stylesheet" href="{{ url_for('static',filename='profile.css') }}" />
@@ -22,65 +20,36 @@
 </div>
 <br><br>
 <h2 style="text-align: center" class="text-uppercase"><strong>Your Profile</strong></h2>
-    <div class="form-container">
-        <div class="imgcontainer">
-            <img src="{{ url_for('static',filename='Images/profile.png') }}" alt="Profile" class="profile" />
-        </div><br>
-        <p class="text-danger d-inline">NOTE: </p>
-        <h6 id="emailHelp" class="d-inline ">We'll never share your information with anyone else.</h6>
+<div class="form-container">
+    <div class="imgcontainer">
+        <img src="{{ url_for('static',filename='Images/profile.png') }}" alt="Profile" class="profile" />
+    </div><br>
+    <p class="text-danger d-inline">NOTE: </p>
+    <h6 id="emailHelp" class="d-inline ">We'll never share your information with anyone else.</h6>
 
-        <div class="form-group">
-            <label for="savedFname"><b>First Name</b></label>
-            <input class="form-control my-2 " type="text" class="form-control" name="savedFname" value = "{{ pro_detail['firstname'] }}" required/>
-<form method="POST" action="/update_profile">
-      <label for="savedLname"><b>Last Name</b></label>
-      <input
-        class="form-control my-2"
-        type="text"
-        class="form-control"
-        name="savedLname"
-        value="{{ pro_detail['lastname'] }}"
-        required
-      />
+    <div class="form-group">
+        <label for="savedFname"><b>First Name</b></label>
+        <input class="form-control my-2 " type="text" class="form-control" name="savedFname" value="{{ pro_detail['firstname'] }}" required/>
+        <form>
+            <label for="savedLname"><b>Last Name</b></label>
+            <input class="form-control my-2" type="text" class="form-control" name="savedLname" value="{{ pro_detail['lastname'] }}" required />
 
-      <label for="savedEmail"><b>Email Address</b></label>
-      <input
-        class="form-control my-2"
-        type="email"
-        class="form-control"
-        name="savedEmail"
-        value = "{{ pro_detail['email'] }}"
-        disabled
-        required
-      />
+            <label for="savedEmail"><b>Email Address</b></label>
+            <input class="form-control my-2" type="email" class="form-control" name="savedEmail" value="{{ pro_detail['email'] }}" disabled required />
 
-      <label for="savedNumber"><b>Phone Number</b></label>
-      <input
-        class="form-control my-2"
-        type="text"
-        class="form-control"
-        name="savedNumber"
-        value= "{{ pro_detail['phone'] }}"
-        required
-      />
+            <label for="savedNumber"><b>Phone Number</b></label>
+            <input class="form-control my-2" type="text" class="form-control" name="savedNumber" value="{{ pro_detail['phone'] }}" required />
 
-      <label for="savedddress"><b>Primary Address</b></label>
-      <input
-        class="form-control my-2"
-        type="text"
-        class="form-control"
-        name="savedAddress"
-        value = "{{ pro_detail['address'] }}"
-        required
-      /><br />
+            <label for="savedddress"><b>Primary Address</b></label>
+            <input class="form-control my-2" type="text" class="form-control" name="savedAddress" value="{{ pro_detail['address'] }}" required /><br />
+            <div class="d-flex">
+                <button onclick="displayMessage()" class="submit-button">Update</button>
+                <button type="button" class="cancel-button"><a class="text-white" href="/delete_profile">Delete profile</a></button>
+            </div>
+        </form>
     </div>
+</div>
 
-    <div class="d-flex">
-      <button class="submit-button" type="submit">Update</button>
-      <button type="button" class="cancel-button">Cancel</button>
-      <a href="/delete_profile">Delete profile</a>
-    </div>
-</form>
 
 <div id="container-footer" class="mt-5">
     <div id="part1">
@@ -112,6 +81,7 @@
     <div id="part2" class="text-center">
         <p id="txt6">&copy; COPYRIGHT 2020 TAX NOTES - All right reserved</p>
     </div>
+</div>
 
 
-    {% endblock %}
+{% endblock %}
