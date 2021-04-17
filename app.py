@@ -28,13 +28,14 @@ def home():
     username = session["username"]
     return render_template('home.html', filed_taxes=filed_taxes, username=username)
 
+
 @app.route('/login')
 def login():
     if 'username' not in session:
         return render_template('landing_page.html')
     else:
         return render_template('home.html')
-        
+
 
 @app.route('/check_login', methods=['GET', 'POST'])
 def check_login():
@@ -52,9 +53,9 @@ def check_login():
     return redirect("/landing")
 
 
-@app.route('/home')
-def home():
-    return render_template('home.html')
+# @app.route('/home')
+# def home():
+#     return render_template('home.html')
 
 
 @app.route('/register')
@@ -164,23 +165,50 @@ def submit_form():
 @app.route('/profile')
 def profile():
     if session['username']:
-        return render_template('profile.html')
+        for i in user_info.find():
+            if i['email'] == session['username']:
+                pro_detail = {
+                    "firstname": i["firstname"],
+                    "lastname": i["lastname"],
+                    "email": i["email"],
+                    "phone": i["phone"],
+                    "address": i["address"]
+                }
+        return render_template('profile.html', pro_detail=pro_detail)
     else:
         return redirect("/landing")
 
 
-@app.route('/update_profile', methods=['POST'])
+@app.route('/update_profile', methods=['GET', 'POST'])
 def update_profile():
-    if request.method == 'POST':
-        data = {
-            "firstName": request.form['savedFname'],
-            "lastName": request.form['savedLname'],
-            "email": request.form['savedEmail'],
-            "number": request.form['savedNumber'],
-            "address": request.form['savedAddress'],
-        }
-        return flash('User has been updated')
+    firstName = request.form['savedFname']
+    lastName = request.form['savedLname']
+    number = request.form['savedNumber']
+    address = request.form['savedAddress']
+    data = {
+        "firstName": firstName,
+        "lastName": lastName,
+        "number": number,
+        "address": address
+    }
+    for i in user_info.find():
+        if i["email"] == session["username"]:
+            i["firstname"] = data["firstName"]
+            i["lastname"] = data["lastName"]
+            i["number"] = data["number"]
+            i["address"] = data["address"]
+            flash('User has been updated')
+            return redirect("/update_profile")
     return redirect("/update_profile")
+
+
+@app.route('/delete_profile')
+def delete_profile():
+    for i in accounts.find():
+        if i['email'] == session["username"]:
+            accounts.remove(i)
+            flash('Your profile has been deleted')
+            return redirect("/login")
 
 
 @app.route('/detail')
@@ -188,6 +216,7 @@ def detail():
     filed_taxes = form_details.find()
     username = session["username"]
     return render_template('showTaxDetail.html', filed_taxes=filed_taxes, username=username)
+
 
 @app.route('/logout')
 def logout():
