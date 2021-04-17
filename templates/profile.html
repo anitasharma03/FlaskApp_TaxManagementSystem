@@ -18,7 +18,10 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='profile.css') }}" />
 
 <div id="banner" class="desktop">
-    <img class="banner-image" src="{{ url_for('static',filename='Images/banner3.jpg') }}" />
+  <img
+    class="banner-image"
+    src="{{ url_for('static',filename='Images/banner3.jpg') }}"
+  />
 </div>
 <br><br>
 <h2 style="text-align: center" class="text-uppercase"><strong>Your Profile</strong></h2>
@@ -36,27 +39,50 @@
             <label for="savedFname"><b>First Name</b></label>
             <input class="form-control my-2 " type="text" class="form-control" id="savedFname" required/>
 
-            <label for="savedLname"><b>Last Name</b></label>
-            <input class="form-control my-2 " type="text" class="form-control" id="savedLname" required/>
+      <label for="savedLname"><b>Last Name</b></label>
+      <input
+        class="form-control my-2"
+        type="text"
+        class="form-control"
+        id="savedLname"
+        required
+      />
 
-            <label for="savedEmail"><b>Email Address</b></label>
-            <input class="form-control my-2 " type="email" class="form-control" id="savedEmail" required/>
+      <label for="savedEmail"><b>Email Address</b></label>
+      <input
+        class="form-control my-2"
+        type="email"
+        class="form-control"
+        id="savedEmail"
+        required
+      />
 
-            <label for="savedNumber"><b>Phone Number</b></label>
-            <input class="form-control my-2 " type="text" class="form-control" id="savedNumber" required/>
+      <label for="savedNumber"><b>Phone Number</b></label>
+      <input
+        class="form-control my-2"
+        type="text"
+        class="form-control"
+        id="savedNumber"
+        required
+      />
 
-            <label for="savedddress"><b>Primary Address</b></label>
-            <input class="form-control my-2 " type="text" class="form-control" id="savedAddress" required/><br>
-        </div>
-
-        <div class="d-flex">
-            <button class="submit-button" type="submit">Update</button>
-            <button type="button" class="cancel-button">Cancel</button>
-        </div>
-        <br>
+      <label for="savedddress"><b>Primary Address</b></label>
+      <input
+        class="form-control my-2"
+        type="text"
+        class="form-control"
+        id="savedAddress"
+        required
+      /><br />
     </div>
-</form>
 
+    <div class="d-flex">
+      <button class="submit-button" type="submit">Update</button>
+      <button type="button" class="cancel-button">Cancel</button>
+    </div>
+    <br />
+  </div>
+</form>
 
 <div id="container-footer" class="mt-5">
     <div id="part1">
@@ -83,9 +109,24 @@
             <a class="link1" href="mailto:wheelzdealz@yahoo.com">taxnotes@yahoo.com</a>
         </div>
     </div>
-    <div id="part2" class="text-center">
-        <p id="txt6">&copy; COPYRIGHT 2020 TAX NOTES - All right reserved</p>
+    <div id="visit">
+      <p id="txt2">Visit</p>
+      <p class="text">118 Citadel Drive</p>
+      <p class="text">Scarborough, ON, M1K4S6</p>
+      <p class="text">Toronto, CANADA</p>
     </div>
+
+    <div id="legal">
+      <p id="txt3">Conatct Info</p>
+      <a class="link1" href="tel:+118005552356">18005552356</a>
+      <a class="link1" href="mailto:wheelzdealz@yahoo.com"
+        >taxnotes@yahoo.com</a
+      >
+    </div>
+  </div>
+  <div id="part2" class="text-center">
+    <p id="txt6">&copy; COPYRIGHT 2020 TAX NOTES - All right reserved</p>
+  </div>
 </div>
 
 {% endblock %}

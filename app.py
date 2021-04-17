@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect, session,flash
+from flask import Flask, render_template, flash, url_for, request, redirect, session
 from flask_bcrypt import Bcrypt
 from pymongo import MongoClient
 from flask_login import LoginManager, login_user, current_user
@@ -8,7 +8,7 @@ client = MongoClient(
     'mongodb+srv://test:test@cluster0.fcu7b.mongodb.net/test?retryWrites=true&w=majority&authMechanism=SCRAM-SHA-1&ssl=true&ssl_cert_reqs=CERT_NONE')
 db = client.taxmanager
 accounts = db.accounts
-form_details = db.formDetails
+user_info = db.formDetails
 
 app = Flask(__name__)
 app.secret_key = 'secret_key'
@@ -17,9 +17,19 @@ bcrypt = Bcrypt()
 
 
 @app.route('/')
-
 @app.route('/landing')
 def landing():
+    return render_template('landing_page.html')
+
+
+@app.route('/home')
+def home():
+    filed_taxes = user_info.find()
+    username = session["username"]
+    return render_template('home.html', filed_taxes=filed_taxes, username=username)
+
+@app.route('/login')
+def login():
     if 'username' not in session:
         return render_template('landing_page.html')
     else:
@@ -49,7 +59,11 @@ def home():
 
 @app.route('/register')
 def register():
-    return render_template('register.html')
+    if 'username' not in session:
+        return render_template('register.html')
+    else:
+        return render_template('home.html')
+
 
 @app.route('/make_account', methods=['GET', 'POST'])
 def make_account():
@@ -59,11 +73,13 @@ def make_account():
         password_repeat = request.form['psw-repeat']
         if password == password_repeat:
             password = bcrypt.generate_password_hash(password).decode('utf-8')
+            session["username"] = email
             credentials = {
                 "email": email,
                 "password": password
             }
             accounts.insert_one(credentials)
+            session["username"] = email
             flash('User has been registered. You can Login now')
             return redirect("/landing")
         else:
@@ -80,8 +96,8 @@ def aboutus():
 @app.route('/contactus')
 def contactus():
     return render_template('contactus.html')
-    
-    
+
+
 @app.route('/term')
 def term():
     return render_template('term.html')
@@ -93,6 +109,17 @@ def form():
         return render_template('tax_form.html')
     else:
         return redirect("/landing")
+
+
+def calc_tax(losses, rrsp, yearly_income, additional_income, yearly_expense):
+    loss_percentage = (int(losses) / 100) * 1.2
+    rrsp_percent = (int(rrsp)/100)*2.5
+    total_income = int(yearly_income) + \
+        int(additional_income) + int(yearly_expense)
+    tax = (total_income/100) * 15
+    total_tax = loss_percentage + rrsp_percent + tax
+    return total_tax
+
 
 @app.route('/submit_form', methods=['GET', 'POST'])
 def submit_form():
@@ -125,23 +152,22 @@ def submit_form():
             "expenses": expenses,
             "losses": losses,
             "rrsp": rrsp,
-            "filed_on": filed_on
+            "filed_on": filed_on,
+            "Total Tax": calc_tax(losses, rrsp, netincome, extraincome, expenses)
         }
-        form_details.insert_one(details)
+        user_info.insert_one(details)
         flash('Your Details has been submitted')
         return redirect("/detail")
     return redirect("/home")
- 
+
 
 @app.route('/profile')
 def profile():
-    if 'username' in session:
-        profile_detail = form_details.find()
-        # form_details.insert_one(details)
-        flash('Youve got your detail') 
-        return render_template('profile.html',profile_detail=profile_detail)
+    if session['username']:
+        return render_template('profile.html')
     else:
         return redirect("/landing")
+
 
 @app.route('/update_profile', methods=['POST'])
 def update_profile():
@@ -153,9 +179,7 @@ def update_profile():
             "number": request.form['savedNumber'],
             "address": request.form['savedAddress'],
         }
-        # TODO: update database
-        # profile.insert_one(data)
-        return flash('User has been updated') 
+        return flash('User has been updated')
     return redirect("/update_profile")
 
 
@@ -169,4 +193,3 @@ def detail():
 def logout():
     session.pop('username', None)
     return render_template('logout.html')
-

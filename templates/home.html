@@ -1,10 +1,11 @@
-{% extends "index.html" %}{% block content %} {% with messages = get_flashed_messages() %} {% if messages %}
+{% extends "index.html" %}{% block content %} {% with messages =
+get_flashed_messages() %} {% if messages %}
 <script>
-    var messages = "{{messages | safe}}";
-    debugger;
-    if (messages.length) {
-        alert(messages.slice(2, -2))
-    }
+  var messages = "{{messages | safe}}";
+  debugger;
+  if (messages.length) {
+    alert(messages.slice(2, -2));
+  }
 </script>
 {% endif %} {% endwith %}
 <style>
@@ -15,6 +16,123 @@
     }
 </style>
 <main>
+  <div id="banner" class="desktop">
+    <img
+      class="banner-image"
+      src="{{ url_for('static',filename='Images/banner3.jpg') }}"
+    />
+  </div>
+  <hr />
+  <h2>Filed Taxes</h2>
+  {% for i in filed_taxes %} {% if i["email"]==username %}
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Filed On</th>
+        <th scope="col">Net Income</th>
+        <th scope="col">Expenses</th>
+        <th scope="col">Total Tax</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ i['filed_on'] }}</td>
+        <td>{{ i['netincome'] }}</td>
+        <td>{{ i['expenses'] }}</td>
+        <td>{{ i['Total Tax'] }}</td>
+      </tr>
+      <table class="table table-light details-table">
+        <thead>
+          <tr>
+            <th scope="col">Details</th>
+            <th scope="col">Values</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>firstname</td>
+            <td>{{ i['firstname'] }}</td>
+          </tr>
+          <tr>
+            <td>lastname</td>
+            <td>{{ i['lastname'] }}</td>
+          </tr>
+          <tr>
+            <td>email</td>
+            <td>{{ i['email'] }}</td>
+          </tr>
+          <tr>
+            <td>number</td>
+            <td>{{ i['phone'] }}</td>
+          </tr>
+          <tr>
+            <td>address</td>
+            <td>{{ i['address'] }}</td>
+          </tr>
+          <tr>
+            <td>address2</td>
+            <td>{{ i['address2'] }}</td>
+          </tr>
+          <tr>
+            <td>sex</td>
+            <td>{{ i['sex'] }}</td>
+          </tr>
+          <tr>
+            <td>sin</td>
+            <td>{{ i['sin'] }}</td>
+          </tr>
+          <tr>
+            <td>netincome</td>
+            <td>{{ i['netincome'] }}</td>
+          </tr>
+          <tr>
+            <td>extraIncome</td>
+            <td>{{ i['extraIncome'] }}</td>
+          </tr>
+          <tr>
+            <td>expenses</td>
+            <td>{{ i['expenses'] }}</td>
+          </tr>
+          <tr>
+            <td>losses</td>
+            <td>{{ i['losses'] }}</td>
+          </tr>
+          <tr>
+            <td>rrsp</td>
+            <td>{{ i['rrsp'] }}</td>
+          </tr>
+          <tr>
+            <td>filed_on</td>
+            <td>{{ i['filed_on'] }}</td>
+          </tr>
+        </tbody>
+      </table>
+      {% endif %} {% endfor %}
+    </tbody>
+  </table>
+  <div id="container-footer" class="mt-5">
+    <div id="part1">
+      <div id="companyinfo">
+        <a id="sitelink" href="#">TaxNotes</a>
+        <p id="title">The Utlimate Tax Solution Platform</p>
+        <p id="detail">
+          We help institutions and individual meet their tax needs in most
+          simplest possible way.
+        </p>
+      </div>
+      <div id="explore">
+        <p id="txt1">Explore</p>
+        <a class="link" href="/aboutus">About Us</a>
+        <a class="link" href="/contactus">Conatct Us</a>
+        <a class="link-terms" href="/term">Terms & Conditions</a>
+      </div>
+      <div id="visit">
+        <p id="txt2">Visit</p>
+        <p class="text">118 Citadel Drive</p>
+        <p class="text">Scarborough, ON, M1K4S6</p>
+        <p class="text">Toronto, CANADA</p>
+      </div>
     <div style="height: 400px; margin-top: 280px;">
         <form>
             <div class="d-flex justify-content-center py-3">
@@ -41,16 +159,18 @@
                 <p class="text">Toronto, CANADA</p>
             </div>
 
-            <div id="legal">
-                <p id="txt3">Conatct Info</p>
-                <a class="link1" href="tel:+118005552356">18005552356</a>
-                <a class="link1" href="mailto:wheelzdealz@yahoo.com">taxnotes@yahoo.com</a>
-            </div>
-        </div>
-        <div id="part2" class="text-center">
-            <p id="txt6">&copy; COPYRIGHT 2020 TAX NOTES - All right reserved</p>
-        </div>
+      <div id="legal">
+        <p id="txt3">Conatct Info</p>
+        <a class="link1" href="tel:+118005552356">18005552356</a>
+        <a class="link1" href="mailto:wheelzdealz@yahoo.com"
+          >taxnotes@yahoo.com</a
+        >
+      </div>
     </div>
-
+    <div id="part2" class="text-center">
+      <p id="txt6">&copy; COPYRIGHT 2020 TAX NOTES - All right reserved</p>
+    </div>
+  </div>
 </main>
+<script src="../static/script.js"></script>
 {% endblock %}
